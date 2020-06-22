@@ -36,4 +36,16 @@ public class Sales {
         }
     }
 
+    public void addTicketTransaction(String type, int count, double profit) {
+        if (type.equals("Daily")) {
+            ticketCount[0] += count;
+            ticketProfit[0] += profit;
+        } else if (type.equals("Yearly")) {
+            ticketCount[1] += count;
+            ticketProfit[1] += profit;
+        } else {
+            System.out.println("Invalid Type");
+        }
+    }
+
 }
