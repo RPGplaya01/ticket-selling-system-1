@@ -8,9 +8,11 @@ Done:
 - Overrided ALL getters and setters 👍
 - Made determinePrice() [Just use it in the constructor then you're good to go] 👍
 - Implement class (Ticket) is *DONE* 👏👍
+- Sales class with addTicketTransaction() and printReport()
 
 TODO:
 - Implement input verification in constructor
 - Override reportAmt() and reportProfit()
 - Daily and Yearly specific elements (based on class diagram)
-- A report/sale class
+- Write Java Docs for Sales class
+- Output sales report to text file
