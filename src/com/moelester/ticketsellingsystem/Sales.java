@@ -48,4 +48,22 @@ public class Sales {
         }
     }
 
+    private int calcTotalTickets() {
+        return ticketCount[0] + ticketCount[1];
+    }
+
+    private double calcTotalProfit() {
+        return ticketProfit[0] + ticketProfit[1];
+    }
+
+    public void printReport() {
+        System.out.println("\nReport Date: " + getDate());
+        System.out.println("Daily Tickets Sold: " + ticketCount[0]);
+        System.out.println("Yearly Tickets Sold: " + ticketCount[1]);
+        System.out.println("Total Tickets Sold: " + calcTotalTickets());
+        System.out.println("Daily Tickets Profit Earned: " + ticketProfit[0]);
+        System.out.println("Yearly Tickets Profit Earned: " + ticketProfit[1]);
+        System.out.println("Total Tickets Profit Earned: " + calcTotalProfit());
+    }
+
 }
