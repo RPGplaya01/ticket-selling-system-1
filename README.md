@@ -1,16 +1,18 @@
 # ticket-selling-system
 
 # Ver 0.1 (WJ)
-Created Daily, Yearly, Main and Ticket
+<u>Created Daily, Yearly, Main and Ticket</u>
 
 Done:
 - Javadocs for base fields 👍
-- overrided ALL getters and setters 👍
-- made determinePrice() [Just use it in the constructor then you're good to go] 👍
-- implement class (Ticket) is *DONE* 👏
+- Overrided ALL getters and setters 👍
+- Made determinePrice() [Just use it in the constructor then you're good to go] 👍
+- Implement class (Ticket) is *DONE* 👏👍
+- Sales class with addTicketTransaction() and printReport()
 
 TODO:
-- implement input verification in constructor
-- override reportAmt() and reportProfit()
--Daily and Yearly specific elements (based on class diagram)
-- A report/sale class
+- Implement input verification in constructor
+- Override reportAmt() and reportProfit()
+- Daily and Yearly specific elements (based on class diagram)
+- Write Java Docs for Sales class
+- Output sales report to text file
