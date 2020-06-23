@@ -12,6 +12,7 @@ nbproject/build-impl.xml
 nbproject/genfiles.properties
 nbproject/project.properties
 nbproject/project.xml
+out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Daily.class
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Main.class
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Sales.class
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Ticket.class
