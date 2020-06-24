@@ -1,5 +1,7 @@
 package com.moelester.ticketsellingsystem;
 
+import java.time.LocalDate;
+
 public class Daily implements Ticket {
 
     /**
@@ -37,7 +39,7 @@ public class Daily implements Ticket {
             this.category = c;
             determinePrice(t, c);
     }
-
+    
     @Override
     public int reportAmt() {
         throw new UnsupportedOperationException("Not supported yet."); 
@@ -118,4 +120,34 @@ public class Daily implements Ticket {
                     break;
             }
         }
+        
+    private int noOfTickets;
+    private LocalDate dayPurchased;
+
+    public Daily(){
+        noOfTickets =0;
+        dayPurchased=null;
+    }
+    
+    public void dailyTicket(int noOfTickets, LocalDate dayPurchased){
+        this.noOfTickets = noOfTickets;
+        this.dayPurchased = dayPurchased;
+    }
+
+    public int getNoOfTickets() {
+        return noOfTickets;
+    }
+
+    public LocalDate getDayPurchased() {
+        return dayPurchased;
+    }
+
+    public void setNoOfTickets(int noOfTickets) {
+        this.noOfTickets = noOfTickets;
+    }
+
+    public void setDayPurchased(LocalDate dayPurchased) {
+        this.dayPurchased = dayPurchased;
+    }
+    
 }
