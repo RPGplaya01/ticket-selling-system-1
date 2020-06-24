@@ -9,7 +9,7 @@ public class Daily implements Ticket {
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String type = "undefined";
+    private String type = null;
      /**
      * <pre>
      * Indicates the category of ticket:
@@ -17,7 +17,7 @@ public class Daily implements Ticket {
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String category = "null";
+    private String category = null;
      /**
      * <pre>
      * Indicates the price of ticket:

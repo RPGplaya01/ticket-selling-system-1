@@ -9,7 +9,7 @@ public class Yearly implements Ticket{
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String type = "undefined";
+    private String type = null;
      /**
      * <pre>
      * Indicates the category of ticket:
@@ -17,7 +17,7 @@ public class Yearly implements Ticket{
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String category = "null";
+    private String category = null;
      /**
      * <pre>
      * Indicates the price of ticket:
@@ -91,7 +91,7 @@ public class Yearly implements Ticket{
             this.idNum = idNum;
         } else {
             System.out.print("Invalid input. Please input numbers only.");
-            this.idNum = "null";
+            this.idNum = null;
         }
     }
 
@@ -105,7 +105,7 @@ public class Yearly implements Ticket{
             this.name = name;
         } else {
             System.out.print("Invalid input. Please enter again.");
-            this.name = "null";
+            this.name = null;
         }
     }
 
@@ -127,7 +127,7 @@ public class Yearly implements Ticket{
             this.gender = gender;
         } else {
             System.out.print("Invalid input. Please enter 'F' or 'M' only.");
-            this.gender = "null";
+            this.gender = null;
         }
     }
 

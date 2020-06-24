@@ -2,6 +2,7 @@ package com.moelester.ticketsellingsystem;
 
 public class Main {
     public static void main(String[] args) {
+
         Ticket myTicket1 = new Yearly("Yearly","Senior");
         Ticket myTicket2 = new Daily("Daily", "Kid/Student");
 
@@ -14,5 +15,6 @@ public class Main {
         System.out.println("Ticket type: " + myTicket2.getType());
         System.out.println("Ticket category: " + myTicket2.getCategory());
         System.out.println("Ticket price: " + myTicket2.getPrice());
+
     }
 }
