@@ -5,6 +5,13 @@
 .idea/vcs.xml
 .idea/workspace.xml
 ticket-selling-system.iml
+/nbproject/private/
+build.xml
+manifest.mf
+nbproject/build-impl.xml
+nbproject/genfiles.properties
+nbproject/project.properties
+nbproject/project.xml
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Daily.class
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Main.class
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Sales.class

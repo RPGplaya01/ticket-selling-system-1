@@ -48,6 +48,12 @@ public class Yearly implements Ticket{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    //Attributes
+    private String idNum;
+    private String name;
+    private String addr;
+    private String gender;
+
     //Getter & Setters
     @Override
     public void setPrice(double p){
@@ -75,10 +81,61 @@ public class Yearly implements Ticket{
     }
     
     @Override
-    public String getType(){
+    public String getType() {
         return type;
     }
+
+    public void setIdNum(String idNum) {
+
+        if (idNum.matches("[0-9]+")) {
+            this.idNum = idNum;
+        } else {
+            System.out.print("Invalid input. Please input numbers only.");
+            this.idNum = "null";
+        }
+    }
+
+    public String getIdNum() {
+        return idNum;
+    }
     
+    public void setName(String name) {
+
+        if (name.matches("[a-zA-Z]+")) {
+            this.name = name;
+        } else {
+            System.out.print("Invalid input. Please enter again.");
+            this.name = "null";
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+    
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setGender(String gender) {
+
+        if (gender == "m" || gender =="M" || gender =="f" || gender =="F") {
+            this.gender = gender;
+        } else {
+            System.out.print("Invalid input. Please enter 'F' or 'M' only.");
+            this.gender = "null";
+        }
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    //Switch case for price table 
     private void determinePrice(String t, String c){
         switch(t){
             case "Daily":
