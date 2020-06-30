@@ -43,6 +43,7 @@ public class Main {
         } while (repeat == 'Y');
 
         sales.printReport();
+        sales.writeReport();
 
     }
 }
