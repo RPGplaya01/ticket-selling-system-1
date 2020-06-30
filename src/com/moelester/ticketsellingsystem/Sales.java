@@ -8,7 +8,8 @@ public class Sales {
     private int[] ticketCount = {0, 0};
     private double[] ticketProfit = {0, 0};
 
-    public Sales() {}
+    public Sales() {
+    }
 
     public LocalDate getDate() {
         return date;
