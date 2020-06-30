@@ -75,11 +75,28 @@ public class Sales {
         try {
             File report = new File("report.txt");
             if (report.createNewFile()) {
-                System.out.println("report.txt file is successfully created.");
+                System.out.println("report.txt is successfully created.");
             }
+        } catch (IOException e) {
+            System.out.println("An error has occurred when creating report.txt.");
+            e.printStackTrace();
         }
-        catch (IOException e) {
-            System.out.println("An error has occurred.");
+
+        try {
+            FileWriter reportWriter = new FileWriter("report.txt", true);
+            reportWriter.write(
+                    "Report Date: " + getDate() +
+                            "\nDaily Tickets Sold: " + ticketCount[0] +
+                            "\nYearly Tickets Sold: " + ticketCount[1] +
+                            "\nTotal Tickets Sold: " + calcTotalTickets() +
+                            "\nDaily Tickets Profit Earned: " + ticketProfit[0] +
+                            "\nYearly Tickets Profit Earned: " + ticketProfit[1] +
+                            "\nTotal Tickets Profit Earned: " + calcTotalProfit() + "\n\n"
+            );
+            reportWriter.close();
+            System.out.println("Report successfully written to report.txt.");
+        } catch (IOException e) {
+            System.out.println("An error has occurred when writing report to report.txt.");
             e.printStackTrace();
         }
     }
