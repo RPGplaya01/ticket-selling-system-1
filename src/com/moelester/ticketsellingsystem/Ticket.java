@@ -21,23 +21,23 @@ public interface Ticket {
             {50, 120},
             {20, 80}};
 
-
-    public int reportAmt();
-
-    public double reportProfit();
-
-    //Getters and Setters implementation
-    public void setPrice(double p);
-
+    //Getters and setters implementation
     public double getPrice();
-
-    public void setCategory(String c);
 
     public String getCategory();
 
+    public String getType();
+
+    public void setPrice(double p);
+
+    public void setCategory(String c);
+
     public void setType(String t);
 
-    public String getType();
+    // Abstract methods
+    public int reportAmt();
+
+    public double reportProfit();
 
 }
 

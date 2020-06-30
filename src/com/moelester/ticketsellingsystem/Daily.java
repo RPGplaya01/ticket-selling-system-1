@@ -33,6 +33,10 @@ public class Daily implements Ticket {
      *
      * @param c "Senior", "Adult" or "Kid/Student"
      */
+
+    private int noOfTickets;
+    private LocalDate dayPurchased;
+
     public Daily(String c) {
         //TODO implement try catch / if else for input validation
         this.type = "Daily";
@@ -40,6 +44,43 @@ public class Daily implements Ticket {
         determinePrice(type, category);
     }
 
+    public Daily() {
+        noOfTickets = 0;
+        dayPurchased = null;
+    }
+
+    // Override getters and setters from Ticket interface
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getCategory() {
+        return category;
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public void setPrice(double p) {
+        price = p;
+    }
+
+    @Override
+    public void setCategory(String c) {
+        category = c;
+    }
+
+    @Override
+    public void setType(String t) {
+        type = t;
+    }
+
+    // Override abstract methods from Ticket interface
     @Override
     public int reportAmt() {
         return 0;
@@ -50,37 +91,29 @@ public class Daily implements Ticket {
         return 0;
     }
 
-    //Getter & Setters
-    @Override
-    public void setPrice(double p) {
-        price = p;
+    // Getters and setters implementation
+    public int getNoOfTickets() {
+        return noOfTickets;
     }
 
-    @Override
-    public double getPrice() {
-        return price;
+    public LocalDate getDayPurchased() {
+        return dayPurchased;
     }
 
-    @Override
-    public void setCategory(String c) {
-        category = c;
+    public void setNoOfTickets(int noOfTickets) {
+        this.noOfTickets = noOfTickets;
     }
 
-    @Override
-    public String getCategory() {
-        return category;
+    public void setDayPurchased(LocalDate dayPurchased) {
+        this.dayPurchased = dayPurchased;
     }
 
-    @Override
-    public void setType(String t) {
-        type = t;
+    public void dailyTicket(int noOfTickets, LocalDate dayPurchased) {
+        this.noOfTickets = noOfTickets;
+        this.dayPurchased = dayPurchased;
     }
 
-    @Override
-    public String getType() {
-        return type;
-    }
-
+    // Switch case for price table
     private void determinePrice(String t, String c) {
         switch (t) {
             case "Daily":
@@ -119,35 +152,6 @@ public class Daily implements Ticket {
                 System.out.println("Invalid type entered.");
                 break;
         }
-    }
-
-    private int noOfTickets;
-    private LocalDate dayPurchased;
-
-    public Daily() {
-        noOfTickets = 0;
-        dayPurchased = null;
-    }
-
-    public void dailyTicket(int noOfTickets, LocalDate dayPurchased) {
-        this.noOfTickets = noOfTickets;
-        this.dayPurchased = dayPurchased;
-    }
-
-    public int getNoOfTickets() {
-        return noOfTickets;
-    }
-
-    public LocalDate getDayPurchased() {
-        return dayPurchased;
-    }
-
-    public void setNoOfTickets(int noOfTickets) {
-        this.noOfTickets = noOfTickets;
-    }
-
-    public void setDayPurchased(LocalDate dayPurchased) {
-        this.dayPurchased = dayPurchased;
     }
 
 }

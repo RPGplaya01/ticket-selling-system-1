@@ -31,6 +31,12 @@ public class Yearly implements Ticket {
      *
      * @param c "Senior", "Adult" or "Kid/Student"
      */
+
+    private String idNum;
+    private String name;
+    private String addr;
+    private String gender;
+
     public Yearly(String c) {
         //TODO implement try catch / if else for input validation
         this.type = "Yearly";
@@ -38,6 +44,38 @@ public class Yearly implements Ticket {
         determinePrice(type, category);
     }
 
+    // Override getters and setters from Ticket interface
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getCategory() {
+        return category;
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public void setPrice(double p) {
+        price = p;
+    }
+
+    @Override
+    public void setCategory(String c) {
+        category = c;
+    }
+
+    @Override
+    public void setType(String t) {
+        type = t;
+    }
+
+    // Override abstract methods from Ticket interface
     @Override
     public int reportAmt() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -48,41 +86,21 @@ public class Yearly implements Ticket {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    //Attributes
-    private String idNum;
-    private String name;
-    private String addr;
-    private String gender;
-
-    //Getter & Setters
-    @Override
-    public void setPrice(double p) {
-        price = p;
+    // Getters and setters implementation
+    public String getIdNum() {
+        return idNum;
     }
 
-    @Override
-    public double getPrice() {
-        return price;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void setCategory(String c) {
-        category = c;
+    public String getAddr() {
+        return addr;
     }
 
-    @Override
-    public String getCategory() {
-        return category;
-    }
-
-    @Override
-    public void setType(String t) {
-        type = t;
-    }
-
-    @Override
-    public String getType() {
-        return type;
+    public String getGender() {
+        return gender;
     }
 
     public void setIdNum(String idNum) {
@@ -95,10 +113,6 @@ public class Yearly implements Ticket {
         }
     }
 
-    public String getIdNum() {
-        return idNum;
-    }
-
     public void setName(String name) {
 
         if (name.matches("[a-zA-Z]+")) {
@@ -109,16 +123,8 @@ public class Yearly implements Ticket {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setAddr(String addr) {
         this.addr = addr;
-    }
-
-    public String getAddr() {
-        return addr;
     }
 
     public void setGender(String gender) {
@@ -131,11 +137,7 @@ public class Yearly implements Ticket {
         }
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    //Switch case for price table 
+    // Switch case for price table
     private void determinePrice(String t, String c) {
         switch (t) {
             case "Daily":

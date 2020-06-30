@@ -11,6 +11,7 @@ public class Sales {
     public Sales() {
     }
 
+    // Getters implementation
     public LocalDate getDate() {
         return date;
     }
