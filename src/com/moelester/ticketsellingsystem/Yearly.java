@@ -28,13 +28,14 @@ public class Yearly implements Ticket{
     
      /**
      * Constructor for ticket subtypes
-     * @param c "Senior", "Adult" or "Kid/Student"
+     * @param type "Yearly" or "Daily"
+     * @param category "Senior", "Adult" or "Kid/Student"
      */
-    public Yearly(String c){
+    public Yearly(String t, String c){
         //TODO implement try catch / if else for input validation
-        this.type = "Yearly";
+        this.type = t;
         this.category = c;
-        determinePrice(type, category);
+        determinePrice(t, c);
     }
     
     @Override
