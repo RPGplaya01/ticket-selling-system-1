@@ -1,5 +1,8 @@
 package com.moelester.ticketsellingsystem;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Yearly implements Ticket {
@@ -39,7 +42,7 @@ public class Yearly implements Ticket {
     private String addr;
     private String gender;
     private String ticketId;
-    private int ticketCounter;
+    private static int ticketCounter;
     /**
      * <pre>
      * -+-----------------------------------+---------+---------+
@@ -166,7 +169,7 @@ public class Yearly implements Ticket {
         }
     }
 
-    public void setTicketId(String id){
+    public void setTicketId(String id) {
         this.ticketId = id;
     }
 
@@ -208,6 +211,42 @@ public class Yearly implements Ticket {
             default:
                 System.out.println("Invalid type entered.");
                 break;
+        }
+    }
+
+    public void printInfo() {
+        System.out.println("\nID Number: " + idNum);
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + addr);
+        System.out.println("Gender: " + gender);
+        System.out.println("Ticket ID: " + ticketId);
+    }
+
+    public void writeInfo() {
+        try {
+            File info = new File("yearly_ticket_info.txt");
+            if (info.createNewFile()) {
+                System.out.println("\nyearly_ticket_info.txt is successfully created.");
+            }
+        } catch (IOException e) {
+            System.out.println("\nAn error has occurred when creating yearly_ticket_info.txt.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter infoWriter = new FileWriter("yearly_ticket_info.txt", true);
+            infoWriter.write(
+                    "ID Number: " + idNum +
+                            "\nName: " + name +
+                            "\nAddress: " + addr +
+                            "\nGender: " + gender +
+                            "\nTicket ID: " + ticketId + "\n\n"
+            );
+            infoWriter.close();
+            System.out.println("\nInformation successfully written to yearly_ticket_info.txt.");
+        } catch (IOException e) {
+            System.out.println("\nAn error has occurred when writing information to yearly_ticket_info.txt.");
+            e.printStackTrace();
         }
     }
 
