@@ -23,13 +23,18 @@ public class Main {
             int count = keyboardInput.nextInt();
 
             if (type.equals("Daily")) {
-                Ticket ticket = new Daily(category);
-                double profit = ticket.getPrice() * count;
+                Daily dailyTicket = new Daily(category);
+                double profit = dailyTicket.getPrice() * count;
                 System.out.println("The total is RM" + profit);
                 sales.addTicketTransaction(type, count, profit);
             } else if (type.equals("Yearly")) {
-                Ticket ticket = new Yearly(category, "011111-10-1111", "playa", "valorant", "m");
-                double profit = ticket.getPrice() * count;
+                Yearly yearlyTicket = new Yearly(category, "011111101111", "playa", "valorant", "m");
+                Yearly yearlyTicket2 = new Yearly(category, "011111102222", "playo", "csgo", "f");
+                yearlyTicket.printInfo();
+                yearlyTicket.writeInfo();
+                yearlyTicket2.printInfo();
+                yearlyTicket2.writeInfo();
+                double profit = yearlyTicket.getPrice() * count;
                 System.out.println("The total is RM" + profit);
                 sales.addTicketTransaction(type, count, profit);
             }
