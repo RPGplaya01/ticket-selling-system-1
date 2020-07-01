@@ -1,6 +1,6 @@
 package com.moelester.ticketsellingsystem;
 
-public class Yearly implements Ticket{
+public class Yearly implements Ticket {
 
     /**
      * <pre>
@@ -10,7 +10,7 @@ public class Yearly implements Ticket{
      * <pre>
      */
     private String type = null;
-     /**
+    /**
      * <pre>
      * Indicates the category of ticket:
      * ONLY USE "Senior", "Adult" or "Kid/Student"
@@ -18,28 +18,67 @@ public class Yearly implements Ticket{
      * <pre>
      */
     private String category = null;
-     /**
+    /**
      * <pre>
      * Indicates the price of ticket:
      * It is automatically determined with determinePrice()
      * <pre>
      */
     private double price = 0;
-    
-     /**
+
+    /**
      * Constructor for ticket subtypes
+     *
      * @param c "Senior", "Adult" or "Kid/Student"
      */
-    public Yearly(String c){
+
+    private String idNum;
+    private String name;
+    private String addr;
+    private String gender;
+
+    public Yearly(String c) {
         //TODO implement try catch / if else for input validation
         this.type = "Yearly";
         this.category = c;
         determinePrice(type, category);
     }
-    
+
+    // Override getters and setters from Ticket interface
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getCategory() {
+        return category;
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public void setPrice(double p) {
+        price = p;
+    }
+
+    @Override
+    public void setCategory(String c) {
+        category = c;
+    }
+
+    @Override
+    public void setType(String t) {
+        type = t;
+    }
+
+    // Override abstract methods from Ticket interface
     @Override
     public int reportAmt() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -47,41 +86,21 @@ public class Yearly implements Ticket{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    //Attributes
-    private String idNum;
-    private String name;
-    private String addr;
-    private String gender;
+    // Getters and setters implementation
+    public String getIdNum() {
+        return idNum;
+    }
 
-    //Getter & Setters
-    @Override
-    public void setPrice(double p){
-        price = p;
+    public String getName() {
+        return name;
     }
-    
-    @Override
-    public double getPrice(){
-        return price;
+
+    public String getAddr() {
+        return addr;
     }
-    
-    @Override
-    public void setCategory(String c){
-        category = c;
-    }
-    
-    @Override
-    public String getCategory(){
-        return category;
-    }
-    
-    @Override
-    public void setType(String t){
-        type = t;
-    }
-    
-    @Override
-    public String getType() {
-        return type;
+
+    public String getGender() {
+        return gender;
     }
 
     public void setIdNum(String idNum) {
@@ -94,10 +113,6 @@ public class Yearly implements Ticket{
         }
     }
 
-    public String getIdNum() {
-        return idNum;
-    }
-    
     public void setName(String name) {
 
         if (name.matches("[a-zA-Z]+")) {
@@ -108,21 +123,13 @@ public class Yearly implements Ticket{
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setAddr(String addr) {
         this.addr = addr;
-    }
-    
-    public String getAddr() {
-        return addr;
     }
 
     public void setGender(String gender) {
 
-        if (gender == "m" || gender =="M" || gender =="f" || gender =="F") {
+        if (gender == "m" || gender == "M" || gender == "f" || gender == "F") {
             this.gender = gender;
         } else {
             System.out.print("Invalid input. Please enter 'F' or 'M' only.");
@@ -130,15 +137,11 @@ public class Yearly implements Ticket{
         }
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    //Switch case for price table 
-    private void determinePrice(String t, String c){
-        switch(t){
+    // Switch case for price table
+    private void determinePrice(String t, String c) {
+        switch (t) {
             case "Daily":
-                switch(c){
+                switch (c) {
                     case "Senior":
                         setPrice(PRICE_LIST[0][0]);
                         break;
@@ -152,9 +155,9 @@ public class Yearly implements Ticket{
                         System.out.println("Invalid category entered.");
                 }
                 break;
-            
+
             case "Yearly":
-                switch(c){
+                switch (c) {
                     case "Senior":
                         setPrice(PRICE_LIST[0][1]);
                         break;
@@ -168,11 +171,11 @@ public class Yearly implements Ticket{
                         System.out.println("Invalid category entered.");
                 }
                 break;
-            
+
             default:
                 System.out.println("Invalid type entered.");
                 break;
         }
     }
-    
+
 }
