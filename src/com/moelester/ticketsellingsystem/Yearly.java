@@ -1,5 +1,7 @@
 package com.moelester.ticketsellingsystem;
 
+import java.util.ArrayList;
+
 public class Yearly implements Ticket {
 
     /**
@@ -36,12 +38,42 @@ public class Yearly implements Ticket {
     private String name;
     private String addr;
     private String gender;
+    private String ticketId;
+    private int ticketCounter;
+    /**
+     * <pre>
+     * -+-----------------------------------+---------+---------+
+     * | ArrayList of ArrayList of Strings | Ticket1 | ...     |
+     * +-----------------------------------+---------+---------+
+     * | idNum                             |         |         |
+     * | name                              |         |         |
+     * | addr                              |         |         |
+     * | gender                            |         |         |
+     * | ticketId                          |         |         |
+     * +-----------------------------------+---------+---------+
+     * <pre>
+     */
+    private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
     public Yearly(String c) {
-        //TODO implement try catch / if else for input validation
         this.type = "Yearly";
         this.category = c;
         determinePrice(type, category);
+
+        //Increment counter so ticketId is properly incremented
+        ticketCounter++;
+        this.ticketId = "TicketY" + Integer.toString(ticketCounter);
+
+        //Make new ArrayList with params
+        ArrayList<String> arrayX = new ArrayList<String>();
+        arrayX.add(idNum);
+        arrayX.add(name);
+        arrayX.add(addr);
+        arrayX.add(gender);
+        arrayX.add(ticketId);
+
+        //Adding the ArrayList of Strings (arrayX) to the ArrayList of ArrayList of Strings (YearlyTickets)
+        YearlyTickets.add(arrayX);
     }
 
     // Override getters and setters from Ticket interface
@@ -75,17 +107,6 @@ public class Yearly implements Ticket {
         type = t;
     }
 
-    // Override abstract methods from Ticket interface
-    @Override
-    public int reportAmt() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public double reportProfit() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     // Getters and setters implementation
     public String getIdNum() {
         return idNum;
@@ -101,6 +122,10 @@ public class Yearly implements Ticket {
 
     public String getGender() {
         return gender;
+    }
+
+    public String getTicketId() {
+        return ticketId;
     }
 
     public void setIdNum(String idNum) {
@@ -130,11 +155,15 @@ public class Yearly implements Ticket {
     public void setGender(String gender) {
 
         if (gender == "m" || gender == "M" || gender == "f" || gender == "F") {
-            this.gender = gender;
+            this.gender = gender.toUpperCase();
         } else {
             System.out.print("Invalid input. Please enter 'F' or 'M' only.");
             this.gender = null;
         }
+    }
+
+    public void setTicketId(String id){
+        this.ticketId = id;
     }
 
     // Switch case for price table

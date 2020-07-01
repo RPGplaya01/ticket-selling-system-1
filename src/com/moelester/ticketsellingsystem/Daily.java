@@ -38,7 +38,6 @@ public class Daily implements Ticket {
     private LocalDate dayPurchased;
 
     public Daily(String c) {
-        //TODO implement try catch / if else for input validation
         this.type = "Daily";
         this.category = c;
         determinePrice(type, category);
@@ -78,17 +77,6 @@ public class Daily implements Ticket {
     @Override
     public void setType(String t) {
         type = t;
-    }
-
-    // Override abstract methods from Ticket interface
-    @Override
-    public int reportAmt() {
-        return 0;
-    }
-
-    @Override
-    public double reportProfit() {
-        return 0;
     }
 
     // Getters and setters implementation

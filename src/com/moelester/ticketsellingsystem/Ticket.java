@@ -34,10 +34,5 @@ public interface Ticket {
 
     public void setType(String t);
 
-    // Abstract methods
-    public int reportAmt();
-
-    public double reportProfit();
-
 }
 
