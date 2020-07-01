@@ -55,10 +55,14 @@ public class Yearly implements Ticket {
      */
     private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
-    public Yearly(String c) {
+    public Yearly(String c, String idNum, String name, String addr, String gender) {
         this.type = "Yearly";
         this.category = c;
         determinePrice(type, category);
+        setIdNum(idNum);
+        setName(name);
+        setAddr(addr);
+        setGender(gender);
 
         //Increment counter so ticketId is properly incremented
         ticketCounter++;
