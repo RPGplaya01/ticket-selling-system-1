@@ -28,7 +28,7 @@ public class Main {
                 System.out.println("The total is RM" + profit);
                 sales.addTicketTransaction(type, count, profit);
             } else if (type.equals("Yearly")) {
-                Ticket ticket = new Yearly(category);
+                Ticket ticket = new Yearly(category, "011111-10-1111", "playa", "valorant", "m");
                 double profit = ticket.getPrice() * count;
                 System.out.println("The total is RM" + profit);
                 sales.addTicketTransaction(type, count, profit);
