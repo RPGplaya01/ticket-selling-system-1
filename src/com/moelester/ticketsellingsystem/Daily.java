@@ -1,5 +1,7 @@
 package com.moelester.ticketsellingsystem;
 
+import java.time.LocalDate;
+
 public class Daily implements Ticket {
 
     /**
@@ -9,16 +11,16 @@ public class Daily implements Ticket {
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String type = "undefined";
-     /**
+    private String type = null;
+    /**
      * <pre>
      * Indicates the category of ticket:
      * ONLY USE "Senior", "Adult" or "Kid/Student"
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String category = "null";
-     /**
+    private String category = null;
+    /**
      * <pre>
      * Indicates the price of ticket:
      * It is automatically determined with determinePrice()
@@ -26,96 +28,118 @@ public class Daily implements Ticket {
      */
     private double price = 0;
 
-     /**
+    /**
      * Constructor for ticket subtypes
-     * @param type "Yearly" or "Daily"
-     * @param category "Senior", "Adult" or "Kid/Student"
+     *
+     * @param c "Senior", "Adult" or "Kid/Student"
      */
-    public Daily(String t, String c){
-    //TODO implement try catch / if else for input validation
-            this.type = t;
-            this.category = c;
-            determinePrice(t, c);
+
+    private int noOfTickets;
+    private LocalDate dayPurchased;
+
+    public Daily(String c) {
+        this.type = "Daily";
+        this.category = c;
+        determinePrice(type, category);
     }
 
-    @Override
-    public int reportAmt() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public Daily() {
+        noOfTickets = 0;
+        dayPurchased = null;
     }
 
+    // Override getters and setters from Ticket interface
     @Override
-    public double reportProfit() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    //Getter & Setters
-    @Override
-    public void setPrice(double p){
-        price = p;
-    }
-    
-    @Override
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
-    
+
     @Override
-    public void setCategory(String c){
-        category = c;
-    }
-    
-    @Override
-    public String getCategory(){
+    public String getCategory() {
         return category;
     }
-    
+
     @Override
-    public void setType(String t){
-        type = t;
-    }
-    
-    @Override
-    public String getType(){
+    public String getType() {
         return type;
     }
-        
-        private void determinePrice(String t, String c){
-            switch(t){
-                case "Daily":
-                    switch(c){
-                        case "Senior":
-                            setPrice(PRICE_LIST[0][0]);
-                            break;
-                        case "Adult":
-                            setPrice(PRICE_LIST[1][0]);
-                            break;
-                        case "Kid/Student":
-                            setPrice(PRICE_LIST[2][0]);
-                            break;
-                        default:
-                            System.out.println("Invalid category entered.");
-                    }
-                    break;
-                
-                case "Yearly":
-                    switch(c){
-                        case "Senior":
-                            setPrice(PRICE_LIST[0][1]);
-                            break;
-                        case "Adult":
-                            setPrice(PRICE_LIST[1][1]);
-                            break;
-                        case "Kid/Student":
-                            setPrice(PRICE_LIST[2][1]);
-                            break;
-                        default:
-                            System.out.println("Invalid category entered.");
-                    }
-                    break;
-                
-                default:
-                    System.out.println("Invalid type entered.");
-                    break;
-            }
+
+    @Override
+    public void setPrice(double p) {
+        price = p;
+    }
+
+    @Override
+    public void setCategory(String c) {
+        category = c;
+    }
+
+    @Override
+    public void setType(String t) {
+        type = t;
+    }
+
+    // Getters and setters implementation
+    public int getNoOfTickets() {
+        return noOfTickets;
+    }
+
+    public LocalDate getDayPurchased() {
+        return dayPurchased;
+    }
+
+    public void setNoOfTickets(int noOfTickets) {
+        this.noOfTickets = noOfTickets;
+    }
+
+    public void setDayPurchased(LocalDate dayPurchased) {
+        this.dayPurchased = dayPurchased;
+    }
+
+    public void dailyTicket(int noOfTickets, LocalDate dayPurchased) {
+        this.noOfTickets = noOfTickets;
+        this.dayPurchased = dayPurchased;
+    }
+
+    // Switch case for price table
+    private void determinePrice(String t, String c) {
+        switch (t) {
+            case "Daily":
+                switch (c) {
+                    case "Senior":
+                        setPrice(PRICE_LIST[0][0]);
+                        break;
+                    case "Adult":
+                        setPrice(PRICE_LIST[1][0]);
+                        break;
+                    case "Kid/Student":
+                        setPrice(PRICE_LIST[2][0]);
+                        break;
+                    default:
+                        System.out.println("Invalid category entered.");
+                }
+                break;
+
+            case "Yearly":
+                switch (c) {
+                    case "Senior":
+                        setPrice(PRICE_LIST[0][1]);
+                        break;
+                    case "Adult":
+                        setPrice(PRICE_LIST[1][1]);
+                        break;
+                    case "Kid/Student":
+                        setPrice(PRICE_LIST[2][1]);
+                        break;
+                    default:
+                        System.out.println("Invalid category entered.");
+                }
+                break;
+
+            default:
+                System.out.println("Invalid type entered.");
+                break;
         }
+    }
+
 }

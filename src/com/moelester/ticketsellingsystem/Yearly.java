@@ -1,6 +1,8 @@
 package com.moelester.ticketsellingsystem;
 
-public class Yearly implements Ticket{
+import java.util.ArrayList;
+
+public class Yearly implements Ticket {
 
     /**
      * <pre>
@@ -9,80 +11,121 @@ public class Yearly implements Ticket{
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String type = "undefined";
-     /**
+    private String type = null;
+    /**
      * <pre>
      * Indicates the category of ticket:
      * ONLY USE "Senior", "Adult" or "Kid/Student"
      * Failure to do so results in exceptions in determinePrice()
      * <pre>
      */
-    private String category = "null";
-     /**
+    private String category = null;
+    /**
      * <pre>
      * Indicates the price of ticket:
      * It is automatically determined with determinePrice()
      * <pre>
      */
     private double price = 0;
-    
-     /**
+
+    /**
      * Constructor for ticket subtypes
-     * @param type "Yearly" or "Daily"
-     * @param category "Senior", "Adult" or "Kid/Student"
+     *
+     * @param c "Senior", "Adult" or "Kid/Student"
      */
-    public Yearly(String t, String c){
-        //TODO implement try catch / if else for input validation
-        this.type = t;
-        this.category = c;
-        determinePrice(t, c);
-    }
-    
-    @Override
-    public int reportAmt() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
 
-    @Override
-    public double reportProfit() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    //Attributes
     private String idNum;
     private String name;
     private String addr;
     private String gender;
+    private String ticketId;
+    private int ticketCounter;
+    /**
+     * <pre>
+     * -+-----------------------------------+---------+---------+
+     * | ArrayList of ArrayList of Strings | Ticket1 | ...     |
+     * +-----------------------------------+---------+---------+
+     * | idNum                             |         |         |
+     * | name                              |         |         |
+     * | addr                              |         |         |
+     * | gender                            |         |         |
+     * | ticketId                          |         |         |
+     * +-----------------------------------+---------+---------+
+     * <pre>
+     */
+    private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
-    //Getter & Setters
-    @Override
-    public void setPrice(double p){
-        price = p;
+    public Yearly(String c) {
+        this.type = "Yearly";
+        this.category = c;
+        determinePrice(type, category);
+
+        //Increment counter so ticketId is properly incremented
+        ticketCounter++;
+        this.ticketId = "TicketY" + Integer.toString(ticketCounter);
+
+        //Make new ArrayList with params
+        ArrayList<String> arrayX = new ArrayList<String>();
+        arrayX.add(idNum);
+        arrayX.add(name);
+        arrayX.add(addr);
+        arrayX.add(gender);
+        arrayX.add(ticketId);
+
+        //Adding the ArrayList of Strings (arrayX) to the ArrayList of ArrayList of Strings (YearlyTickets)
+        YearlyTickets.add(arrayX);
     }
-    
+
+    // Override getters and setters from Ticket interface
     @Override
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
-    
+
     @Override
-    public void setCategory(String c){
-        category = c;
-    }
-    
-    @Override
-    public String getCategory(){
+    public String getCategory() {
         return category;
     }
-    
-    @Override
-    public void setType(String t){
-        type = t;
-    }
-    
+
     @Override
     public String getType() {
         return type;
+    }
+
+    @Override
+    public void setPrice(double p) {
+        price = p;
+    }
+
+    @Override
+    public void setCategory(String c) {
+        category = c;
+    }
+
+    @Override
+    public void setType(String t) {
+        type = t;
+    }
+
+    // Getters and setters implementation
+    public String getIdNum() {
+        return idNum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getTicketId() {
+        return ticketId;
     }
 
     public void setIdNum(String idNum) {
@@ -91,55 +134,43 @@ public class Yearly implements Ticket{
             this.idNum = idNum;
         } else {
             System.out.print("Invalid input. Please input numbers only.");
-            this.idNum = "null";
+            this.idNum = null;
         }
     }
 
-    public String getIdNum() {
-        return idNum;
-    }
-    
     public void setName(String name) {
 
         if (name.matches("[a-zA-Z]+")) {
             this.name = name;
         } else {
             System.out.print("Invalid input. Please enter again.");
-            this.name = "null";
+            this.name = null;
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setAddr(String addr) {
         this.addr = addr;
     }
-    
-    public String getAddr() {
-        return addr;
-    }
 
     public void setGender(String gender) {
 
-        if (gender == "m" || gender =="M" || gender =="f" || gender =="F") {
-            this.gender = gender;
+        if (gender == "m" || gender == "M" || gender == "f" || gender == "F") {
+            this.gender = gender.toUpperCase();
         } else {
             System.out.print("Invalid input. Please enter 'F' or 'M' only.");
-            this.gender = "null";
+            this.gender = null;
         }
     }
 
-    public String getGender() {
-        return gender;
+    public void setTicketId(String id){
+        this.ticketId = id;
     }
 
-    //Switch case for price table 
-    private void determinePrice(String t, String c){
-        switch(t){
+    // Switch case for price table
+    private void determinePrice(String t, String c) {
+        switch (t) {
             case "Daily":
-                switch(c){
+                switch (c) {
                     case "Senior":
                         setPrice(PRICE_LIST[0][0]);
                         break;
@@ -153,9 +184,9 @@ public class Yearly implements Ticket{
                         System.out.println("Invalid category entered.");
                 }
                 break;
-            
+
             case "Yearly":
-                switch(c){
+                switch (c) {
                     case "Senior":
                         setPrice(PRICE_LIST[0][1]);
                         break;
@@ -169,11 +200,11 @@ public class Yearly implements Ticket{
                         System.out.println("Invalid category entered.");
                 }
                 break;
-            
+
             default:
                 System.out.println("Invalid type entered.");
                 break;
         }
     }
-    
+
 }
