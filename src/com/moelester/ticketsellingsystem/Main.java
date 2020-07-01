@@ -2,6 +2,7 @@ package com.moelester.ticketsellingsystem;
 
 public class Main {
     public static void main(String[] args) {
+<<<<<<< Updated upstream
         Ticket myTicket1 = new Yearly("Yearly","Senior");
         Ticket myTicket2 = new Daily("Daily", "Kid/Student");
 
@@ -14,5 +15,50 @@ public class Main {
         System.out.println("Ticket type: " + myTicket2.getType());
         System.out.println("Ticket category: " + myTicket2.getCategory());
         System.out.println("Ticket price: " + myTicket2.getPrice());
+=======
+
+        Sales sales = new Sales();
+
+        Scanner keyboardInput = new Scanner(System.in);
+
+        char repeat = 'N';
+
+        do {
+
+            System.out.println("Please select ticket type:");
+            String type = keyboardInput.nextLine();
+
+            System.out.println("Please select ticket category:");
+            String category = keyboardInput.nextLine();
+
+            System.out.println("Please input ticket count:");
+            int count = keyboardInput.nextInt();
+
+            if (type.equals("Daily")) {
+                Ticket ticket = new Daily(category);
+                double profit = ticket.getPrice() * count;
+                System.out.println("The total is RM" + profit);
+                sales.addTicketTransaction(type, count, profit);
+            } else if (type.equals("Yearly")) {
+                Ticket ticket = new Yearly(category, "011111101111", "playa", "valorant", "M");
+                double profit = ticket.getPrice() * count;
+                System.out.println("The total is RM" + profit);
+                sales.addTicketTransaction(type, count, profit);
+            }
+
+            System.out.println("Do you want to perform another transaction? (Y/N)");
+            repeat = keyboardInput.next().charAt(0);
+
+            // Consuming the leftover new line using the nextLine() method
+            keyboardInput.nextLine();
+
+        } while (repeat == 'Y');
+
+        sales.printReport();
+        sales.writeReport();
+
+        
+
+>>>>>>> Stashed changes
     }
 }
