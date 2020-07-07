@@ -118,6 +118,7 @@ public class Main {
 
             // Consuming the leftover new line using the nextLine() method
             keyboardInput.nextLine();
+            repeat = Character.toUpperCase(repeat);
 
         } while (repeat == 'Y');
 
