@@ -74,51 +74,48 @@ public class Main {
 
         if (typeStr.equals("Daily")) {
 
-            int[] catCount = {0, 0, 0};
+            int[] catQuantity = {0, 0, 0};
 
             System.out.println("\nPlease enter the amount of tickets for each category:");
             System.out.println("Senior: ");
-            catCount[0] = keyboardInput.nextInt();
+            catQuantity[0] = keyboardInput.nextInt();
 
             System.out.println("Adult: ");
-            catCount[1] = keyboardInput.nextInt();
+            catQuantity[1] = keyboardInput.nextInt();
 
             System.out.println("Kid/Student: ");
-            catCount[2] = keyboardInput.nextInt();
+            catQuantity[2] = keyboardInput.nextInt();
 
             double totalProfit = 0;
             Daily seniorTicket = new Daily("Senior");
-            totalProfit += seniorTicket.getPrice() * catCount[0];
+            totalProfit += seniorTicket.getPrice() * catQuantity[0];
             Daily adultTicket = new Daily("Adult");
-            totalProfit += adultTicket.getPrice() * catCount[1];
+            totalProfit += adultTicket.getPrice() * catQuantity[1];
             Daily kidTicket = new Daily("Kid/Student");
-            totalProfit += kidTicket.getPrice() * catCount[2];
+            totalProfit += kidTicket.getPrice() * catQuantity[2];
 
-            int totalCount = catCount[0] + catCount[1] + catCount[2];
-            System.out.println("\nTicket Type: " + typeStr);
-            System.out.println("Ticket Quantity: " + totalCount);
-            System.out.println("Total Price: RM" + totalProfit);
+            int totalQuantity = catQuantity[0] + catQuantity[1] + catQuantity[2];
 
-            sales.addTicketTransaction(typeStr, totalCount, totalProfit);
+            sales.addTicketTransaction(typeStr, totalQuantity, totalProfit);
 
         } else if (typeStr.equals("Yearly")) {
 
-            int count = 0;
+            int quantity = 0;
 
             do {
 
                 System.out.println("\nPlease enter the amount of tickets:");
-                count = keyboardInput.nextInt();
+                quantity = keyboardInput.nextInt();
 
-                if (count > 3) {
+                if (quantity > 3) {
                     System.out.println("\nYou can only purchase 3 yearly tickets in one transaction.");
                 }
 
-            } while (count > 3);
+            } while (quantity > 3);
 
             double totalProfit = 0;
 
-            for (int i = 1; i <= count; i++) {
+            for (int i = 1; i <= quantity; i++) {
 
                 char catChar;
                 String catStr = null;
@@ -162,7 +159,7 @@ public class Main {
 
             }
 
-            sales.addTicketTransaction(typeStr, count, totalProfit);
+            sales.addTicketTransaction(typeStr, quantity, totalProfit);
 
         }
 
