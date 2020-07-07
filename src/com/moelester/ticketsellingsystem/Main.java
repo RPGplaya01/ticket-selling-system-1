@@ -1,6 +1,5 @@
 package com.moelester.ticketsellingsystem;
 
-import java.time.Year;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +9,7 @@ public class Main {
 
         Scanner keyboardInput = new Scanner(System.in);
 
-        char repeat = 'N';
+        char repeat;
 
         System.out.println("                                     /$$$$$$$$                           /$$   /$$                                                                                                    \n" +
                 "                                    |_____ $$                           | $$$ | $$                                                                                                    \n" +
@@ -96,11 +95,9 @@ public class Main {
 
             int totalQuantity = catQuantity[0] + catQuantity[1] + catQuantity[2];
 
-            sales.addTicketTransaction(typeStr, totalQuantity, totalProfit);
+        } else {
 
-        } else if (typeStr.equals("Yearly")) {
-
-            int quantity = 0;
+            int quantity;
 
             do {
 
@@ -159,8 +156,6 @@ public class Main {
 
             }
 
-            sales.addTicketTransaction(typeStr, quantity, totalProfit);
-
         }
 
             System.out.println("Do you want to perform another transaction? (Y/N)");
@@ -171,9 +166,6 @@ public class Main {
             repeat = Character.toUpperCase(repeat);
 
         } while (repeat == 'Y');
-
-        sales.printReport();
-        sales.writeReport();
 
     }
 }
