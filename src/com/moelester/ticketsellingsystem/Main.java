@@ -1,5 +1,6 @@
 package com.moelester.ticketsellingsystem;
 
+import java.time.Year;
 import java.util.Scanner;
 
 public class Main {
@@ -71,19 +72,19 @@ public class Main {
 
         System.out.println("\nYou have selected " + typeStr + " ticket type.");
 
-        int[] catCount = {0, 0, 0};
-
-        System.out.println("\nPlease enter the amount of tickets for each category:");
-        System.out.println("Senior: ");
-        catCount[0] = keyboardInput.nextInt();
-
-        System.out.println("Adult: ");
-        catCount[1] = keyboardInput.nextInt();
-
-        System.out.println("Kid/Student: ");
-        catCount[2] = keyboardInput.nextInt();
-
         if (typeStr.equals("Daily")) {
+
+            int[] catCount = {0, 0, 0};
+
+            System.out.println("\nPlease enter the amount of tickets for each category:");
+            System.out.println("Senior: ");
+            catCount[0] = keyboardInput.nextInt();
+
+            System.out.println("Adult: ");
+            catCount[1] = keyboardInput.nextInt();
+
+            System.out.println("Kid/Student: ");
+            catCount[2] = keyboardInput.nextInt();
 
             double totalProfit = 0;
             Daily seniorTicket = new Daily("Senior");
@@ -101,16 +102,68 @@ public class Main {
             sales.addTicketTransaction(typeStr, totalCount, totalProfit);
 
         } else if (typeStr.equals("Yearly")) {
-//            Yearly yearlyTicket = new Yearly(category, "011111101111", "playa", "valorant", "m");
-//            Yearly yearlyTicket2 = new Yearly(category, "011111102222", "playo", "csgo", "f");
-//            yearlyTicket.printInfo();
-//            yearlyTicket.writeInfo();
-//            yearlyTicket2.printInfo();
-//            yearlyTicket2.writeInfo();
-//            double profit = yearlyTicket.getPrice() * count;
-//            System.out.println("The total is RM" + profit);
-//            sales.addTicketTransaction(type, count, profit);
-            System.out.println("Yearly Test");
+
+            int count = 0;
+
+            do {
+
+                System.out.println("\nPlease enter the amount of tickets:");
+                count = keyboardInput.nextInt();
+
+                if (count > 3) {
+                    System.out.println("\nYou can only purchase 3 yearly tickets in one transaction.");
+                }
+
+            } while (count > 3);
+
+            double totalProfit = 0;
+
+            for (int i = 1; i <= count; i++) {
+
+                char catChar;
+                String catStr = null;
+
+                System.out.println("\nPlease select the ticket category (1-3):");
+                System.out.println("1. Senior");
+                System.out.println("2. Adult");
+                System.out.println("3. Kid/Student");
+
+                catChar = keyboardInput.next().charAt(0);
+
+                switch (catChar) {
+                    case '1' -> catStr = "Senior";
+                    case '2' -> catStr = "Adult";
+                    case '3' -> catStr = "Kid/Student";
+                    default -> System.out.println("\nInvalid input! Please input only 1-3.");
+                }
+
+                keyboardInput.nextLine();
+                System.out.println("\nPlease enter the ID number e.g. 1234567890:");
+                String idNum = keyboardInput.nextLine();
+
+                System.out.println("\nPlease enter the name:");
+                String name = keyboardInput.nextLine();
+
+                System.out.println("\nPlease enter the address:");
+                String address = keyboardInput.nextLine();
+
+                System.out.println("\nPlease enter the gender:");
+                String gender = keyboardInput.nextLine();
+
+                Yearly yearlyTicket = new Yearly(catStr, idNum, name, address, gender);
+                yearlyTicket.printInfo();
+                yearlyTicket.writeInfo();
+
+                totalProfit += yearlyTicket.getPrice();
+
+                System.out.println("\nTicket Type: " + typeStr);
+                System.out.println("Ticket Quantity: " + i);
+                System.out.println("Total Price: RM" + totalProfit);
+
+            }
+
+            sales.addTicketTransaction(typeStr, count, totalProfit);
+
         }
 
             System.out.println("Do you want to perform another transaction? (Y/N)");

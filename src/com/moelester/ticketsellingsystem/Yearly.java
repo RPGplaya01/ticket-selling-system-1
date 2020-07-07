@@ -140,17 +140,17 @@ public class Yearly implements Ticket {
         if (idNum.matches("[0-9]+")) {
             this.idNum = idNum;
         } else {
-            System.out.print("Invalid input. Please input numbers only.");
+            System.out.print("\nInvalid input. Please input numbers only.");
             this.idNum = null;
         }
     }
 
     public void setName(String name) {
 
-        if (name.matches("[a-zA-Z]+")) {
+        if (name.matches("[a-z A-Z]+")) {
             this.name = name;
         } else {
-            System.out.print("Invalid input. Please enter again.");
+            System.out.print("\nInvalid input. Please enter again.");
             this.name = null;
         }
     }
@@ -161,10 +161,10 @@ public class Yearly implements Ticket {
 
     public void setGender(String gender) {
 
-        if (gender == "m" || gender == "M" || gender == "f" || gender == "F") {
+        if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
             this.gender = gender.toUpperCase();
         } else {
-            System.out.print("Invalid input. Please enter 'F' or 'M' only.");
+            System.out.print("\nInvalid input. Please enter 'F' or 'M' only.");
             this.gender = null;
         }
     }
