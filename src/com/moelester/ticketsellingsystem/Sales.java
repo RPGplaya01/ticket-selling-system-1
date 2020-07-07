@@ -7,96 +7,31 @@ import java.io.IOException;
 
 public class Sales {
 
-    private LocalDate date = LocalDate.now();
-    private int[] ticketCount = {0, 0};
-    private double[] ticketProfit = {0, 0};
-
-    public Sales() {
+    public static String obtainTransactionData(String type, int quantity, double profit) {
+        return "\nTransaction Date: " + LocalDate.now() +
+                "\nTicket Type: " + type +
+                "\nTicket Quantity: " + quantity +
+                "\nTotal Price: RM" + profit;
     }
 
-    // Getters implementation
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public int getTicketCount(String type) {
-        if (type.equals("Daily")) {
-            return ticketCount[0];
-        } else if (type.equals("Yearly")) {
-            return ticketCount[1];
-        } else {
-            System.out.println("Invalid Type");
-            return 0;
-        }
-    }
-
-    public double getTicketProfit(String type) {
-        if (type.equals("Daily")) {
-            return ticketProfit[0];
-        } else if (type.equals("Yearly")) {
-            return ticketProfit[1];
-        } else {
-            System.out.println("Invalid Type");
-            return 0;
-        }
-    }
-
-    public void addTicketTransaction(String type, int count, double profit) {
-        if (type.equals("Daily")) {
-            ticketCount[0] += count;
-            ticketProfit[0] += profit;
-        } else if (type.equals("Yearly")) {
-            ticketCount[1] += count;
-            ticketProfit[1] += profit;
-        } else {
-            System.out.println("Invalid Type");
-        }
-    }
-
-    private int calcTotalTickets() {
-        return ticketCount[0] + ticketCount[1];
-    }
-
-    private double calcTotalProfit() {
-        return ticketProfit[0] + ticketProfit[1];
-    }
-
-    public void printReport() {
-        System.out.println("\nReport Date: " + getDate());
-        System.out.println("Daily Tickets Sold: " + ticketCount[0]);
-        System.out.println("Yearly Tickets Sold: " + ticketCount[1]);
-        System.out.println("Total Tickets Sold: " + calcTotalTickets());
-        System.out.println("Daily Tickets Profit Earned: " + ticketProfit[0]);
-        System.out.println("Yearly Tickets Profit Earned: " + ticketProfit[1]);
-        System.out.println("Total Tickets Profit Earned: " + calcTotalProfit());
-    }
-
-    public void writeReport() {
+    public static void writeTransaction(String transactionData) {
         try {
-            File report = new File("reports.txt");
-            if (report.createNewFile()) {
-                System.out.println("\nreports.txt is successfully created.");
+            File transaction = new File("transactions.txt");
+            if (transaction.createNewFile()) {
+                System.out.println("\ntransactions.txt is successfully created.");
             }
         } catch (IOException e) {
-            System.out.println("\nAn error has occurred when creating reports.txt.");
+            System.out.println("\nAn error has occurred when creating transactions.txt.");
             e.printStackTrace();
         }
 
         try {
-            FileWriter reportWriter = new FileWriter("reports.txt", true);
-            reportWriter.write(
-                    "Report Date: " + getDate() +
-                            "\nDaily Tickets Sold: " + ticketCount[0] +
-                            "\nYearly Tickets Sold: " + ticketCount[1] +
-                            "\nTotal Tickets Sold: " + calcTotalTickets() +
-                            "\nDaily Tickets Profit Earned: " + ticketProfit[0] +
-                            "\nYearly Tickets Profit Earned: " + ticketProfit[1] +
-                            "\nTotal Tickets Profit Earned: " + calcTotalProfit() + "\n\n"
-            );
-            reportWriter.close();
-            System.out.println("\nReport successfully written to reports.txt.");
+            FileWriter transactionWriter = new FileWriter("transactions.txt", true);
+            transactionWriter.write(transactionData);
+            transactionWriter.close();
+            System.out.println("\nTransaction successfully written to transactions.txt.");
         } catch (IOException e) {
-            System.out.println("\nAn error has occurred when writing report to reports.txt.");
+            System.out.println("\nAn error has occurred when writing transaction to transactions.txt.");
             e.printStackTrace();
         }
     }
