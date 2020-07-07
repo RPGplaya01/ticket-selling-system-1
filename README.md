@@ -9,14 +9,15 @@ Done:
 - Made determinePrice() [Just use it in the constructor then you're good to go] 👍
 - Implement class (Ticket) is *DONE* 👏👍
 - Sales class with addTicketTransaction() and printReport()
-- Implement write sales report to report.txt
 - Daily and Yearly specific elements (based on class diagram)
+- Implement write transactions to transactions.txt (Marcus)
 
 TODO:
 - Update class diagram
-- Implement write transactions to transactions.txt (Marcus)
+- Implement read transactions.txt and generate report which writes to report.txt (Marcus)
 - Implement input validation in each class (Everyone)
 - Write Java Docs for every class (Everyone)
 - Add comments to main class (Wen Jun)
 - Remove reportAmt() and reportProfit() (TW, KX)
+- Object orient main method better
 
