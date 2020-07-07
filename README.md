@@ -10,10 +10,13 @@ Done:
 - Implement class (Ticket) is *DONE* 👏👍
 - Sales class with addTicketTransaction() and printReport()
 - Implement write sales report to report.txt
+- Daily and Yearly specific elements (based on class diagram)
 
 TODO:
-- Implement input verification in constructor
-- Override reportAmt() and reportProfit()
-- Daily and Yearly specific elements (based on class diagram)
-- Write Java Docs for Sales class
+- Update class diagram
+- Implement write transactions to transactions.txt (Marcus)
+- Implement input validation in each class (Everyone)
+- Write Java Docs for every class (Everyone)
+- Add comments to main class (Wen Jun)
+- Remove reportAmt() and reportProfit() (TW, KX)
 
