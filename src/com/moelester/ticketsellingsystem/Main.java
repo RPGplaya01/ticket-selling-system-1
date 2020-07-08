@@ -170,7 +170,7 @@ public class Main {
 
         } while (repeat == 'Y');
 
-        String reportData = Sales.generateReport("2020-07-08");
+        String reportData = Sales.generateReport("2020-07-09");
         System.out.println(reportData);
         Sales.writeReport(reportData);
 

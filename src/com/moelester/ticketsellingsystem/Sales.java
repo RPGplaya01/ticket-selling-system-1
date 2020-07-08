@@ -15,7 +15,7 @@ public class Sales {
                 "\nTicket Quantity:\n" +
                 quantity +
                 "\nTotal Price (RM):\n" +
-                (int) profit + "\n";
+                (int) profit;
     }
 
     public static void writeTransaction(String transactionData) {
@@ -31,7 +31,7 @@ public class Sales {
 
         try {
             FileWriter transactionWriter = new FileWriter("transactions.txt", true);
-            transactionWriter.write(transactionData);
+            transactionWriter.write(transactionData+"\n");
             transactionWriter.close();
             System.out.println("\nTransaction successfully written to transactions.txt.");
         } catch (IOException e) {
