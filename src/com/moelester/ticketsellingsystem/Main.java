@@ -170,5 +170,8 @@ public class Main {
 
         } while (repeat == 'Y');
 
+        String reportData = Sales.generateReport("2020-07-08");
+        System.out.println(reportData);
+
     }
 }
