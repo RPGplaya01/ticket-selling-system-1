@@ -11,13 +11,13 @@ Done:
 - Sales class with addTicketTransaction() and printReport()
 - Daily and Yearly specific elements (based on class diagram)
 - Implement write transactions to transactions.txt (Marcus)
+- Implement read transactions.txt and generate report which writes to report.txt
 
 TODO:
 - Update class diagram
-- Implement read transactions.txt and generate report which writes to report.txt (Marcus)
 - Implement input validation in each class (Everyone)
 - Write Java Docs for every class (Everyone)
 - Add comments to main class (Wen Jun)
-- Remove reportAmt() and reportProfit() (TW, KX)
 - Object orient main method better
+- Improve CLI user friendliness
 
