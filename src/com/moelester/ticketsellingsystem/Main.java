@@ -94,9 +94,9 @@ public class Main {
 
                 int totalQuantity = catQuantity[0] + catQuantity[1] + catQuantity[2];
 
-                String transaction = Sales.obtainTransactionData(typeStr, totalQuantity, totalProfit);
-                System.out.println(transaction);
-                Sales.writeTransaction(transaction);
+                String transactionData = Sales.obtainTransactionData(typeStr, totalQuantity, totalProfit);
+                System.out.println(transactionData);
+                Sales.writeTransaction(transactionData);
 
             } else {
 
@@ -156,9 +156,9 @@ public class Main {
 
                 }
 
-                String transaction = Sales.obtainTransactionData(typeStr, quantity, totalProfit);
-                System.out.println(transaction);
-                Sales.writeTransaction(transaction);
+                String transactionData = Sales.obtainTransactionData(typeStr, quantity, totalProfit);
+                System.out.println(transactionData);
+                Sales.writeTransaction(transactionData);
 
             }
 
@@ -170,8 +170,9 @@ public class Main {
 
         } while (repeat == 'Y');
 
-        String reportData = Sales.generateReport("2020-07-08");
+        String reportData = Sales.generateReport("2020-07-09");
         System.out.println(reportData);
+        Sales.writeReport(reportData);
 
     }
 }

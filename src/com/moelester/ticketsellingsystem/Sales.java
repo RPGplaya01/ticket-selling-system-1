@@ -15,7 +15,7 @@ public class Sales {
                 "\nTicket Quantity:\n" +
                 quantity +
                 "\nTotal Price (RM):\n" +
-                (int) profit + "\n";
+                (int) profit;
     }
 
     public static void writeTransaction(String transactionData) {
@@ -31,7 +31,7 @@ public class Sales {
 
         try {
             FileWriter transactionWriter = new FileWriter("transactions.txt", true);
-            transactionWriter.write(transactionData);
+            transactionWriter.write(transactionData+"\n");
             transactionWriter.close();
             System.out.println("\nTransaction successfully written to transactions.txt.");
         } catch (IOException e) {
@@ -50,7 +50,7 @@ public class Sales {
             String transactionDate = Files.readAllLines(Paths.get("transactions.txt")).get(line);
             long lineCount = Files.lines(Paths.get("transactions.txt")).count();
 
-            for (line = 2 ; line <= lineCount ; line += 9) {
+            for (line = 2; line <= lineCount; line += 9) {
                 if (transactionDate.equals(reportDate)) {
 
                     String type = Files.readAllLines(Paths.get("transactions.txt")).get(line + 2);
@@ -90,6 +90,28 @@ public class Sales {
             return null;
         }
 
+    }
+
+    public static void writeReport(String reportData) {
+        try {
+            File report = new File("reports.txt");
+            if (report.createNewFile()) {
+                System.out.println("\nreports.txt is successfully created.");
+            }
+        } catch (IOException e) {
+            System.out.println("\nAn error has occurred when creating reports.txt.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter reportWriter = new FileWriter("reports.txt", true);
+            reportWriter.write(reportData + "\n");
+            reportWriter.close();
+            System.out.println("\nReport successfully written to reports.txt.");
+        } catch (IOException e) {
+            System.out.println("\nAn error has occurred when writing report to reports.txt.");
+            e.printStackTrace();
+        }
     }
 
 }
