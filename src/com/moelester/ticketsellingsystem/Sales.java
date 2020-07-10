@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Sales {
 
@@ -31,7 +32,7 @@ public class Sales {
 
         try {
             FileWriter transactionWriter = new FileWriter("transactions.txt", true);
-            transactionWriter.write(transactionData+"\n");
+            transactionWriter.write(transactionData + "\n");
             transactionWriter.close();
             System.out.println("\nTransaction successfully written to transactions.txt.");
         } catch (IOException e) {
@@ -40,7 +41,25 @@ public class Sales {
         }
     }
 
-    public static String generateReport(String reportDate) {
+    private static String askReportDate() {
+        boolean isValidDate = false;
+        String reportDate;
+        do {
+            System.out.println("Please input the report date (YYYY-MM-DD):");
+            Scanner dateScanner = new Scanner(System.in);
+            reportDate = dateScanner.nextLine();
+
+            if (reportDate.matches("(\\d{4}-\\d{2}-\\d{2})")) {
+                isValidDate = true;
+            } else {
+                System.out.println("Invalid input! Please input the date with only integers and dashes (YYYY-MM-DD).");
+            }
+        } while (!isValidDate);
+        return reportDate;
+    }
+
+    public static String generateReport() {
+        String reportDate = askReportDate();
         try {
 
             int line = 2;

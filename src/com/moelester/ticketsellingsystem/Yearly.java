@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Yearly implements Ticket {
 
@@ -41,8 +42,7 @@ public class Yearly implements Ticket {
     private String name;
     private String addr;
     private String gender;
-    private String ticketId;
-    private static int ticketCounter;
+
     /**
      * <pre>
      * -+-----------------------------------+---------+---------+
@@ -67,17 +67,12 @@ public class Yearly implements Ticket {
         setAddr(addr);
         setGender(gender);
 
-        //Increment counter so ticketId is properly incremented
-        ticketCounter++;
-        this.ticketId = "TicketY" + Integer.toString(ticketCounter);
-
         //Make new ArrayList with params
         ArrayList<String> arrayX = new ArrayList<String>();
         arrayX.add(idNum);
         arrayX.add(name);
         arrayX.add(addr);
         arrayX.add(gender);
-        arrayX.add(ticketId);
 
         //Adding the ArrayList of Strings (arrayX) to the ArrayList of ArrayList of Strings (YearlyTickets)
         YearlyTickets.add(arrayX);
@@ -131,10 +126,6 @@ public class Yearly implements Ticket {
         return gender;
     }
 
-    public String getTicketId() {
-        return ticketId;
-    }
-
     public void setIdNum(String idNum) {
 
         if (idNum.matches("[0-9]+")) {
@@ -167,10 +158,6 @@ public class Yearly implements Ticket {
             System.out.print("\nInvalid input. Please enter 'F' or 'M' only.");
             this.gender = null;
         }
-    }
-
-    public void setTicketId(String id) {
-        this.ticketId = id;
     }
 
     // Switch case for price table
@@ -219,7 +206,6 @@ public class Yearly implements Ticket {
         System.out.println("Name: " + name);
         System.out.println("Address: " + addr);
         System.out.println("Gender: " + gender);
-        System.out.println("Ticket ID: " + ticketId);
     }
 
     public void writeInfo() {
@@ -239,8 +225,7 @@ public class Yearly implements Ticket {
                     "ID Number: " + idNum +
                             "\nName: " + name +
                             "\nAddress: " + addr +
-                            "\nGender: " + gender +
-                            "\nTicket ID: " + ticketId + "\n\n"
+                            "\nGender: " + gender + "\n\n"
             );
             infoWriter.close();
             System.out.println("\nInformation successfully written to yearly_ticket_info.txt.");
@@ -248,6 +233,64 @@ public class Yearly implements Ticket {
             System.out.println("\nAn error has occurred when writing information to yearly_ticket_info.txt.");
             e.printStackTrace();
         }
+    }
+
+    public static double[] performYearlyTransaction() {
+        double[] total = {0, 0};
+        Scanner yearlyScanner = new Scanner(System.in);
+
+        do {
+
+            System.out.println("\nPlease enter the amount of tickets:");
+            total[0] = yearlyScanner.nextInt();
+
+            if (total[0] > 3) {
+                System.out.println("\nYou can only purchase 3 yearly tickets in one transaction.");
+            }
+
+        } while (total[0] > 3);
+
+        for (int i = 1; i <= total[0]; i++) {
+
+            char catChar;
+            String catStr = null;
+
+            System.out.println("\nPlease select the ticket category (1-3):");
+            System.out.println("1. Senior");
+            System.out.println("2. Adult");
+            System.out.println("3. Kid/Student");
+
+            catChar = yearlyScanner.next().charAt(0);
+
+            switch (catChar) {
+                case '1' -> catStr = "Senior";
+                case '2' -> catStr = "Adult";
+                case '3' -> catStr = "Kid/Student";
+                default -> System.out.println("\nInvalid input! Please input only 1-3.");
+            }
+
+            // Consuming the leftover new line using the nextLine() method
+            yearlyScanner.nextLine();
+            System.out.println("\nPlease enter the ID number e.g. 1234567890:");
+            String idNum = yearlyScanner.nextLine();
+
+            System.out.println("\nPlease enter the name:");
+            String name = yearlyScanner.nextLine();
+
+            System.out.println("\nPlease enter the address:");
+            String address = yearlyScanner.nextLine();
+
+            System.out.println("\nPlease enter the gender:");
+            String gender = yearlyScanner.nextLine();
+
+            Yearly yearlyTicket = new Yearly(catStr, idNum, name, address, gender);
+            yearlyTicket.printInfo();
+            yearlyTicket.writeInfo();
+
+            total[1] += yearlyTicket.getPrice();
+
+        }
+        return total;
     }
 
 }
