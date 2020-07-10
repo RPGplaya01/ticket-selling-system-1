@@ -13,10 +13,10 @@ Done:
 - Implement write transactions to transactions.txt (Marcus)
 - Implement read transactions.txt and generate report which writes to report.txt
 - Object orient main method better
+- Change printInfo() to return String data for writeInfo() and rename the methods (Marcus)
 
 TODO:
 - Update your own class in class diagram (Everyone)
 - Implement input validation with do while loops of each class (Everyone)
 - Write Java Docs for every class (Everyone)
 - Add comments to main class (Wen Jun)
-- Change printInfo() to return data for writeInfo() (Marcus)
