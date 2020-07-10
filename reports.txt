@@ -1,0 +1,16 @@
+Report Date: 2020-07-07
+Daily Tickets Sold: 1
+Yearly Tickets Sold: 0
+Total Tickets Sold: 1
+Daily Tickets Profit Earned: 30.0
+Yearly Tickets Profit Earned: 0.0
+Total Tickets Profit Earned: 30.0
+
+Report Date: 2020-07-07
+Daily Tickets Sold: 50
+Yearly Tickets Sold: 0
+Total Tickets Sold: 50
+Daily Tickets Profit Earned: 1920.0
+Yearly Tickets Profit Earned: 0.0
+Total Tickets Profit Earned: 1920.0
+
