@@ -201,14 +201,14 @@ public class Yearly implements Ticket {
         }
     }
 
-    public void printInfo() {
-        System.out.println("\nID Number: " + idNum);
-        System.out.println("Name: " + name);
-        System.out.println("Address: " + addr);
-        System.out.println("Gender: " + gender);
+    public String obtainYearlyTicketInfo() {
+        return "\nID Number: " + idNum +
+                "\nName: " + name +
+                "\nAddress: " + addr +
+                "\nGender: " + gender;
     }
 
-    public void writeInfo() {
+    public void writeYearlyTicketInfo(String yearlyTicketInfo) {
         try {
             File info = new File("yearly_ticket_info.txt");
             if (info.createNewFile()) {
@@ -221,12 +221,7 @@ public class Yearly implements Ticket {
 
         try {
             FileWriter infoWriter = new FileWriter("yearly_ticket_info.txt", true);
-            infoWriter.write(
-                    "ID Number: " + idNum +
-                            "\nName: " + name +
-                            "\nAddress: " + addr +
-                            "\nGender: " + gender + "\n\n"
-            );
+            infoWriter.write(yearlyTicketInfo + "\n");
             infoWriter.close();
             System.out.println("\nInformation successfully written to yearly_ticket_info.txt.");
         } catch (IOException e) {
@@ -284,8 +279,9 @@ public class Yearly implements Ticket {
             String gender = yearlyScanner.nextLine();
 
             Yearly yearlyTicket = new Yearly(catStr, idNum, name, address, gender);
-            yearlyTicket.printInfo();
-            yearlyTicket.writeInfo();
+            String yearlyTicketInfo = yearlyTicket.obtainYearlyTicketInfo();
+            System.out.println(yearlyTicketInfo);
+            yearlyTicket.writeYearlyTicketInfo(yearlyTicketInfo);
 
             total[1] += yearlyTicket.getPrice();
 
