@@ -1,7 +1,7 @@
 # ticket-selling-system
 
-# Ver 0.1 (WJ)
-<u>Created Daily, Yearly, Main and Ticket</u>
+# Ver 1.0 (Everyone)
+<u>Created Daily, Yearly, Main, Ticket and Sales</u>
 
 Done:
 - Javadocs for base fields 👍
@@ -12,12 +12,10 @@ Done:
 - Daily and Yearly specific elements (based on class diagram)
 - Implement write transactions to transactions.txt (Marcus)
 - Implement read transactions.txt and generate report which writes to report.txt
+- Object orient main method better
 
 TODO:
-- Update class diagram
-- Implement input validation in each class (Everyone)
+- Update your own class in class diagram (Everyone)
+- Implement input validation with do while loops of each class (Everyone)
 - Write Java Docs for every class (Everyone)
 - Add comments to main class (Wen Jun)
-- Object orient main method better
-- Improve CLI user friendliness
-
