@@ -19,3 +19,4 @@ TODO:
 - Implement input validation with do while loops of each class (Everyone)
 - Write Java Docs for every class (Everyone)
 - Add comments to main class (Wen Jun)
+- Change printInfo() to return data for writeInfo() (Marcus)
