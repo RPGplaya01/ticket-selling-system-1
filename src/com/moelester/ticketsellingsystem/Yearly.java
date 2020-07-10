@@ -202,10 +202,10 @@ public class Yearly implements Ticket {
     }
 
     public String obtainYearlyTicketInfo() {
-        return "\nID Number: " + idNum +
-                "\nName: " + name +
-                "\nAddress: " + addr +
-                "\nGender: " + gender;
+        return "\nID Number: " + getIdNum() +
+                "\nName: " + getName() +
+                "\nAddress: " + getAddr() +
+                "\nGender: " + getGender();
     }
 
     public void writeYearlyTicketInfo(String yearlyTicketInfo) {

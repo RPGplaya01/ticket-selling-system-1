@@ -51,7 +51,7 @@ public class Main {
 
             do {
 
-                System.out.println("\nPlease select the function (1-3):");
+                System.out.println("\nPlease select the function (0-3):");
                 System.out.println("1. Perform Daily Ticket Transaction");
                 System.out.println("2. Perform Yearly Ticket Transaction");
                 System.out.println("3. Generate Report");

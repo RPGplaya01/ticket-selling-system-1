@@ -18,5 +18,5 @@ Done:
 TODO:
 - Update your own class in class diagram (Everyone)
 - Implement input validation with do while loops of each class (Everyone)
-- Write Java Docs for every class (Everyone)
+- Write Java Docs and comments for every class (Everyone)
 - Add comments to main class (Wen Jun)
