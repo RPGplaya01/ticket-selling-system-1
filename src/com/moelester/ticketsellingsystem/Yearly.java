@@ -1,6 +1,10 @@
 package com.moelester.ticketsellingsystem;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Yearly implements Ticket {
 
@@ -133,23 +137,11 @@ public class Yearly implements Ticket {
     }
 
     public void setIdNum(String idNum) {
-
-        if (idNum.matches("[0-9]+")) {
             this.idNum = idNum;
-        } else {
-            System.out.print("Invalid input. Please input numbers only.");
-            this.idNum = null;
-        }
     }
 
     public void setName(String name) {
-
-        if (name.matches("[a-zA-Z]+")) {
-            this.name = name;
-        } else {
-            System.out.print("Invalid input. Please enter again.");
-            this.name = null;
-        }
+        this.name = name;
     }
 
     public void setAddr(String addr) {
@@ -157,13 +149,7 @@ public class Yearly implements Ticket {
     }
 
     public void setGender(String gender) {
-
-        if (gender == "m" || gender == "M" || gender == "f" || gender == "F") {
             this.gender = gender.toUpperCase();
-        } else {
-            System.out.print("Invalid input. Please enter 'F' or 'M' only.");
-            this.gender = null;
-        }
     }
 
     public void setTicketId(String id){
@@ -209,6 +195,159 @@ public class Yearly implements Ticket {
                 System.out.println("Invalid type entered.");
                 break;
         }
+    }
+
+    public String obtainYearlyTicketInfo() {
+        return "\nID Number: " + getIdNum() +
+                "\nName: " + getName() +
+                "\nAddress: " + getAddr() +
+                "\nGender: " + getGender();
+    }
+
+    public void writeYearlyTicketInfo(String yearlyTicketInfo) {
+        try {
+            File info = new File("yearly_ticket_info.txt");
+            if (info.createNewFile()) {
+                System.out.println("\nyearly_ticket_info.txt is successfully created.");
+            }
+        } catch (IOException e) {
+            System.out.println("\nAn error has occurred when creating yearly_ticket_info.txt.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter infoWriter = new FileWriter("yearly_ticket_info.txt", true);
+            infoWriter.write(yearlyTicketInfo + "\n");
+            infoWriter.close();
+            System.out.println("\nInformation successfully written to yearly_ticket_info.txt.");
+        } catch (IOException e) {
+            System.out.println("\nAn error has occurred when writing information to yearly_ticket_info.txt.");
+            e.printStackTrace();
+        }
+    }
+
+    public static double[] performYearlyTransaction() {
+        double[] total = { 0, 0 };
+        Scanner yearlyScanner = new Scanner(System.in);
+
+        do {
+
+            System.out.println("\nPlease enter the amount of tickets:");
+            total[0] = yearlyScanner.nextInt();
+
+            if (total[0] > 3) {
+                System.out.println("\nYou can only purchase 3 yearly tickets in one transaction.");
+            }
+
+        } while (total[0] > 3);
+
+        for (int i = 1; i <= total[0]; i++) {
+
+            char catChar;
+            String catStr = null;
+
+            System.out.println("\nPlease select the ticket category (1-3):");
+            System.out.println("1. Senior");
+            System.out.println("2. Adult");
+            System.out.println("3. Kid/Student");
+
+            catChar = yearlyScanner.next().charAt(0);
+
+            switch (catChar) {
+                case '1' -> catStr = "Senior";
+                case '2' -> catStr = "Adult";
+                case '3' -> catStr = "Kid/Student";
+                default -> System.out.println("\nInvalid input! Please input only 1-3.");
+            }
+
+        
+            String idNum = askIdNum();
+
+            String name = askName();
+
+            String address = askAddress();
+
+            String gender = askGender();
+
+            Yearly yearlyTicket = new Yearly(catStr, idNum, name, address, gender);
+            String yearlyTicketInfo = yearlyTicket.obtainYearlyTicketInfo();
+            System.out.println(yearlyTicketInfo);
+            yearlyTicket.writeYearlyTicketInfo(yearlyTicketInfo);
+
+            total[1] += yearlyTicket.getPrice();
+
+        }
+        return total;
+    }
+    
+    private static String askIdNum() {
+        boolean validation = false;
+        Scanner idScanner = new Scanner(System.in);
+        String idNum;
+
+        do {
+            System.out.println("\nPlease enter the ID number e.g. 1234567890:");
+            idNum = idScanner.next();
+
+            if (idNum.matches("[0-9]+")) {
+                validation = true;
+            } else {
+                System.out.print("\nInvalid input. Please input numbers only.");
+            }
+
+        } while (!validation);
+        return idNum;
+    }
+    
+    private static String askName() {
+        boolean validation = false;
+        Scanner nameScanner = new Scanner(System.in);
+        String name;
+
+        do {
+            System.out.println("\nPlease enter the name:");
+            name = nameScanner.next();
+
+            if (name.matches("[a-z A-Z]+")) {
+                validation = true;
+            } else {
+                System.out.print("\nInvalid input. Please enter again.");
+                name = null;
+            }
+
+        } while (!validation);
+        return name;
+    }
+
+    private static String askAddress() {
+        Scanner addressScanner = new Scanner(System.in);
+        String address;
+
+        System.out.println("\nPlease enter the address:");
+        address = addressScanner.next();
+        
+        return address;
+    }
+    
+    private static String askGender() {
+        boolean validation = false;
+        Scanner genderScanner = new Scanner(System.in);
+        String gender;
+        
+        do{
+            System.out.println("\nPlease enter the gender ('f' or 'm'):");
+            gender = genderScanner.next();
+
+         if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
+             validation = true;
+             gender = gender.toUpperCase();
+            } else {
+                System.out.print("\nInvalid input. Please input 'f' or 'm' only.");
+                gender = null;
+            }
+
+        } while (!validation);
+        return gender;
     }
 
 }
