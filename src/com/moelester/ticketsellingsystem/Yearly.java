@@ -42,8 +42,7 @@ public class Yearly implements Ticket {
     private String name;
     private String addr;
     private String gender;
-    private String ticketId;
-    private int ticketCounter;
+
     /**
      * <pre>
      * -+-----------------------------------+---------+---------+
@@ -68,17 +67,12 @@ public class Yearly implements Ticket {
         setAddr(addr);
         setGender(gender);
 
-        //Increment counter so ticketId is properly incremented
-        ticketCounter++;
-        this.ticketId = "TicketY" + Integer.toString(ticketCounter);
-
         //Make new ArrayList with params
         ArrayList<String> arrayX = new ArrayList<String>();
         arrayX.add(idNum);
         arrayX.add(name);
         arrayX.add(addr);
         arrayX.add(gender);
-        arrayX.add(ticketId);
 
         //Adding the ArrayList of Strings (arrayX) to the ArrayList of ArrayList of Strings (YearlyTickets)
         YearlyTickets.add(arrayX);
@@ -132,10 +126,6 @@ public class Yearly implements Ticket {
         return gender;
     }
 
-    public String getTicketId() {
-        return ticketId;
-    }
-
     public void setIdNum(String idNum) {
             this.idNum = idNum;
     }
@@ -150,10 +140,6 @@ public class Yearly implements Ticket {
 
     public void setGender(String gender) {
             this.gender = gender.toUpperCase();
-    }
-
-    public void setTicketId(String id){
-        this.ticketId = id;
     }
 
     // Switch case for price table
@@ -227,7 +213,7 @@ public class Yearly implements Ticket {
     }
 
     public static double[] performYearlyTransaction() {
-        double[] total = { 0, 0 };
+        double[] total = {0, 0};
         Scanner yearlyScanner = new Scanner(System.in);
 
         do {
@@ -349,5 +335,5 @@ public class Yearly implements Ticket {
         } while (!validation);
         return gender;
     }
-
+S
 }

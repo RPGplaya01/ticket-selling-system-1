@@ -1,6 +1,7 @@
 package com.moelester.ticketsellingsystem;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Daily implements Ticket {
 
@@ -140,6 +141,35 @@ public class Daily implements Ticket {
                 System.out.println("Invalid type entered.");
                 break;
         }
+    }
+
+    public static double[] performDailyTransaction() {
+        int[] catQuantity = {0, 0, 0};
+
+        Scanner dailyScanner = new Scanner(System.in);
+
+        System.out.println("\nPlease enter the amount of tickets for each category:");
+        System.out.println("Senior: ");
+        catQuantity[0] = dailyScanner.nextInt();
+
+        System.out.println("Adult: ");
+        catQuantity[1] = dailyScanner.nextInt();
+
+        System.out.println("Kid/Student: ");
+        catQuantity[2] = dailyScanner.nextInt();
+
+        double[] total = {0, 0};
+
+        total[0] = catQuantity[0] + catQuantity[1] + catQuantity[2];
+
+        Daily seniorTicket = new Daily("Senior");
+        total[1] += seniorTicket.getPrice() * catQuantity[0];
+        Daily adultTicket = new Daily("Adult");
+        total[1] += adultTicket.getPrice() * catQuantity[1];
+        Daily kidTicket = new Daily("Kid/Student");
+        total[1] += kidTicket.getPrice() * catQuantity[2];
+
+        return total;
     }
 
 }

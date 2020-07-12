@@ -18,3 +18,10 @@ out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Sales.cla
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Ticket.class
 out/production/ticket-selling-system/com/moelester/ticketsellingsystem/Yearly.class
 .vscode/settings.json
+.classpath
+.project
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.m2e.core.prefs
+pom.xml
