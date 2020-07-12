@@ -335,5 +335,5 @@ public class Yearly implements Ticket {
         } while (!validation);
         return gender;
     }
-S
+
 }
