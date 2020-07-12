@@ -127,23 +127,11 @@ public class Yearly implements Ticket {
     }
 
     public void setIdNum(String idNum) {
-
-        if (idNum.matches("[0-9]+")) {
             this.idNum = idNum;
-        } else {
-            System.out.print("\nInvalid input. Please input numbers only.");
-            this.idNum = null;
-        }
     }
 
     public void setName(String name) {
-
-        if (name.matches("[a-z A-Z]+")) {
-            this.name = name;
-        } else {
-            System.out.print("\nInvalid input. Please enter again.");
-            this.name = null;
-        }
+        this.name = name;
     }
 
     public void setAddr(String addr) {
@@ -151,13 +139,7 @@ public class Yearly implements Ticket {
     }
 
     public void setGender(String gender) {
-
-        if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
             this.gender = gender.toUpperCase();
-        } else {
-            System.out.print("\nInvalid input. Please enter 'F' or 'M' only.");
-            this.gender = null;
-        }
     }
 
     // Switch case for price table
@@ -264,19 +246,14 @@ public class Yearly implements Ticket {
                 default -> System.out.println("\nInvalid input! Please input only 1-3.");
             }
 
-            // Consuming the leftover new line using the nextLine() method
-            yearlyScanner.nextLine();
-            System.out.println("\nPlease enter the ID number e.g. 1234567890:");
-            String idNum = yearlyScanner.nextLine();
+        
+            String idNum = askIdNum();
 
-            System.out.println("\nPlease enter the name:");
-            String name = yearlyScanner.nextLine();
+            String name = askName();
 
-            System.out.println("\nPlease enter the address:");
-            String address = yearlyScanner.nextLine();
+            String address = askAddress();
 
-            System.out.println("\nPlease enter the gender:");
-            String gender = yearlyScanner.nextLine();
+            String gender = askGender();
 
             Yearly yearlyTicket = new Yearly(catStr, idNum, name, address, gender);
             String yearlyTicketInfo = yearlyTicket.obtainYearlyTicketInfo();
@@ -287,6 +264,76 @@ public class Yearly implements Ticket {
 
         }
         return total;
+    }
+    
+    private static String askIdNum() {
+        boolean validation = false;
+        Scanner idScanner = new Scanner(System.in);
+        String idNum;
+
+        do {
+            System.out.println("\nPlease enter the ID number e.g. 1234567890:");
+            idNum = idScanner.next();
+
+            if (idNum.matches("[0-9]+")) {
+                validation = true;
+            } else {
+                System.out.print("\nInvalid input. Please input numbers only.");
+            }
+
+        } while (!validation);
+        return idNum;
+    }
+    
+    private static String askName() {
+        boolean validation = false;
+        Scanner nameScanner = new Scanner(System.in);
+        String name;
+
+        do {
+            System.out.println("\nPlease enter the name:");
+            name = nameScanner.next();
+
+            if (name.matches("[a-z A-Z]+")) {
+                validation = true;
+            } else {
+                System.out.print("\nInvalid input. Please enter again.");
+                name = null;
+            }
+
+        } while (!validation);
+        return name;
+    }
+
+    private static String askAddress() {
+        Scanner addressScanner = new Scanner(System.in);
+        String address;
+
+        System.out.println("\nPlease enter the address:");
+        address = addressScanner.next();
+        
+        return address;
+    }
+    
+    private static String askGender() {
+        boolean validation = false;
+        Scanner genderScanner = new Scanner(System.in);
+        String gender;
+        
+        do{
+            System.out.println("\nPlease enter the gender ('f' or 'm'):");
+            gender = genderScanner.next();
+
+         if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
+             validation = true;
+             gender = gender.toUpperCase();
+            } else {
+                System.out.print("\nInvalid input. Please input 'f' or 'm' only.");
+                gender = null;
+            }
+
+        } while (!validation);
+        return gender;
     }
 
 }

@@ -1,0 +1,80 @@
+
+Transaction Date: 2020-07-07
+Ticket Type: Daily
+Ticket Quantity: 3
+Total Price: RM150.0
+Transaction Date: 2020-07-07
+Ticket Type: Yearly
+Ticket Quantity: 3
+Total Price: RM320.0
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
+
+Transaction Date:
+2020-07-12
+Ticket Type:
+Yearly
+Ticket Quantity:
+1
+Total Price (RM):
+100
