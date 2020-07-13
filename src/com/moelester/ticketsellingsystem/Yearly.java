@@ -58,6 +58,14 @@ public class Yearly implements Ticket {
      */
     private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
+    /**
+     *
+     * @param c
+     * @param idNum
+     * @param name
+     * @param addr
+     * @param gender
+     */
     public Yearly(String c, String idNum, String name, String addr, String gender) {
         this.type = "Yearly";
         this.category = c;
@@ -142,7 +150,11 @@ public class Yearly implements Ticket {
             this.gender = gender.toUpperCase();
     }
 
-    // Switch case for price table
+    /**
+     * Switch case for price table
+     * @param t
+     * @param c
+     */
     private void determinePrice(String t, String c) {
         switch (t) {
             case "Daily":
@@ -183,6 +195,10 @@ public class Yearly implements Ticket {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String obtainYearlyTicketInfo() {
         return "\nID Number: " + getIdNum() +
                 "\nName: " + getName() +
@@ -190,6 +206,10 @@ public class Yearly implements Ticket {
                 "\nGender: " + getGender();
     }
 
+    /**
+     *
+     * @param yearlyTicketInfo
+     */
     public void writeYearlyTicketInfo(String yearlyTicketInfo) {
         try {
             File info = new File("yearly_ticket_info.txt");
@@ -212,6 +232,10 @@ public class Yearly implements Ticket {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static double[] performYearlyTransaction() {
         double[] total = {0, 0};
         Scanner yearlyScanner = new Scanner(System.in);
@@ -265,7 +289,11 @@ public class Yearly implements Ticket {
         }
         return total;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     private static String askIdNum() {
         boolean validation = false;
         Scanner idScanner = new Scanner(System.in);
@@ -284,7 +312,11 @@ public class Yearly implements Ticket {
         } while (!validation);
         return idNum;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     private static String askName() {
         boolean validation = false;
         Scanner nameScanner = new Scanner(System.in);
@@ -305,6 +337,10 @@ public class Yearly implements Ticket {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     private static String askAddress() {
         Scanner addressScanner = new Scanner(System.in);
         String address;
@@ -314,7 +350,11 @@ public class Yearly implements Ticket {
         
         return address;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     private static String askGender() {
         boolean validation = false;
         Scanner genderScanner = new Scanner(System.in);
