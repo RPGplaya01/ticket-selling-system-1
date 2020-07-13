@@ -183,6 +183,13 @@ public class Yearly implements Ticket {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Display personal details
+     * @return all personal details from user input
+     */
+>>>>>>> Stashed changes
     public String obtainYearlyTicketInfo() {
         return "\nID Number: " + getIdNum() +
                 "\nName: " + getName() +
@@ -190,6 +197,13 @@ public class Yearly implements Ticket {
                 "\nGender: " + getGender();
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Writes into txt file
+     * @param yearlyTicketInfo
+     */
+>>>>>>> Stashed changes
     public void writeYearlyTicketInfo(String yearlyTicketInfo) {
         try {
             File info = new File("yearly_ticket_info.txt");
@@ -212,6 +226,13 @@ public class Yearly implements Ticket {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * The loop for buying yearly ticket
+     * @return number of tickets wanted to buy, getting personal info
+     */
+>>>>>>> Stashed changes
     public static double[] performYearlyTransaction() {
         double[] total = {0, 0};
         Scanner yearlyScanner = new Scanner(System.in);
@@ -265,9 +286,17 @@ public class Yearly implements Ticket {
         }
         return total;
     }
+<<<<<<< Updated upstream
     
+=======
+
+    /**
+     * Method to get Id Number with validation of only input numbers
+     * @return id number
+     */
+>>>>>>> Stashed changes
     private static String askIdNum() {
-        boolean validation = false;
+        boolean idValidation = false;
         Scanner idScanner = new Scanner(System.in);
         String idNum;
 
@@ -281,12 +310,20 @@ public class Yearly implements Ticket {
                 System.out.print("\nInvalid input. Please input numbers only.");
             }
 
-        } while (!validation);
+        } while (!idValidation);
         return idNum;
     }
+<<<<<<< Updated upstream
     
+=======
+
+    /**
+     * Method to get name with validation of only input alphabets
+     * @return name
+     */
+>>>>>>> Stashed changes
     private static String askName() {
-        boolean validation = false;
+        boolean nameValidation = false;
         Scanner nameScanner = new Scanner(System.in);
         String name;
 
@@ -301,10 +338,17 @@ public class Yearly implements Ticket {
                 name = null;
             }
 
-        } while (!validation);
+        } while (!nameValidation);
         return name;
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Method to get address
+     * @return address
+     */
+>>>>>>> Stashed changes
     private static String askAddress() {
         Scanner addressScanner = new Scanner(System.in);
         String address;
@@ -314,9 +358,17 @@ public class Yearly implements Ticket {
         
         return address;
     }
+<<<<<<< Updated upstream
     
+=======
+
+    /**
+     * Method to get gender with validation of only F or M
+     * @return gender
+     */
+>>>>>>> Stashed changes
     private static String askGender() {
-        boolean validation = false;
+        boolean genderValidation = false;
         Scanner genderScanner = new Scanner(System.in);
         String gender;
         
@@ -332,7 +384,7 @@ public class Yearly implements Ticket {
                 gender = null;
             }
 
-        } while (!validation);
+        } while (!genderValidation);
         return gender;
     }
 
