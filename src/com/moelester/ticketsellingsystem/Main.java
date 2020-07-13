@@ -7,8 +7,6 @@ public class Main {
 
         Scanner keyboardInput = new Scanner(System.in);
 
-        char repeat;
-
         System.out.println("                                     /$$$$$$$$                           /$$   /$$                                                                                                    \n" +
                 "                                    |_____ $$                           | $$$ | $$                                                                                                    \n" +
                 "                                         /$$/   /$$$$$$   /$$$$$$       | $$$$| $$  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$                                                    \n" +
