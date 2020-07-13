@@ -196,8 +196,10 @@ public class Yearly implements Ticket {
     }
 
     /**
-     *
-     * @return
+
+     * Display personal details
+     * @return all personal details from user input
+
      */
     public String obtainYearlyTicketInfo() {
         return "\nID Number: " + getIdNum() +
@@ -207,7 +209,7 @@ public class Yearly implements Ticket {
     }
 
     /**
-     *
+     * Writes into txt file
      * @param yearlyTicketInfo
      */
     public void writeYearlyTicketInfo(String yearlyTicketInfo) {
@@ -233,8 +235,9 @@ public class Yearly implements Ticket {
     }
 
     /**
-     *
-     * @return
+
+     * The loop for buying yearly ticket
+     * @return number of tickets wanted to buy, getting personal info
      */
     public static double[] performYearlyTransaction() {
         double[] total = {0, 0};
@@ -291,11 +294,11 @@ public class Yearly implements Ticket {
     }
 
     /**
-     *
-     * @return
+     * Method to get Id Number with validation of only input numbers
+     * @return id number
      */
     private static String askIdNum() {
-        boolean validation = false;
+        boolean idValidation = false;
         Scanner idScanner = new Scanner(System.in);
         String idNum;
 
@@ -304,21 +307,21 @@ public class Yearly implements Ticket {
             idNum = idScanner.next();
 
             if (idNum.matches("[0-9]+")) {
-                validation = true;
+                idValidation = true;
             } else {
                 System.out.print("\nInvalid input. Please input numbers only.");
             }
 
-        } while (!validation);
+        } while (!idValidation);
         return idNum;
     }
 
     /**
-     *
-     * @return
+     * Method to get name with validation of only input alphabets
+     * @return name
      */
     private static String askName() {
-        boolean validation = false;
+        boolean nameValidation = false;
         Scanner nameScanner = new Scanner(System.in);
         String name;
 
@@ -327,19 +330,19 @@ public class Yearly implements Ticket {
             name = nameScanner.next();
 
             if (name.matches("[a-z A-Z]+")) {
-                validation = true;
+                nameValidation = true;
             } else {
                 System.out.print("\nInvalid input. Please enter again.");
                 name = null;
             }
 
-        } while (!validation);
+        } while (!nameValidation);
         return name;
     }
 
     /**
-     *
-     * @return
+     * Method to get address
+     * @return address
      */
     private static String askAddress() {
         Scanner addressScanner = new Scanner(System.in);
@@ -352,11 +355,11 @@ public class Yearly implements Ticket {
     }
 
     /**
-     *
-     * @return
+     * Method to get gender with validation of only F or M
+     * @return gender
      */
     private static String askGender() {
-        boolean validation = false;
+        boolean genderValidation = false;
         Scanner genderScanner = new Scanner(System.in);
         String gender;
         
@@ -365,14 +368,14 @@ public class Yearly implements Ticket {
             gender = genderScanner.next();
 
          if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
-             validation = true;
+             genderValidation = true;
              gender = gender.toUpperCase();
             } else {
                 System.out.print("\nInvalid input. Please input 'f' or 'm' only.");
                 gender = null;
             }
 
-        } while (!validation);
+        } while (!genderValidation);
         return gender;
     }
 
