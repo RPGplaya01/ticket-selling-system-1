@@ -58,6 +58,14 @@ public class Yearly implements Ticket {
      */
     private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
+    /**
+     *
+     * @param c
+     * @param idNum
+     * @param name
+     * @param addr
+     * @param gender
+     */
     public Yearly(String c, String idNum, String name, String addr, String gender) {
         this.type = "Yearly";
         this.category = c;
@@ -142,7 +150,11 @@ public class Yearly implements Ticket {
             this.gender = gender.toUpperCase();
     }
 
-    // Switch case for price table
+    /**
+     * Switch case for price table
+     * @param t
+     * @param c
+     */
     private void determinePrice(String t, String c) {
         switch (t) {
             case "Daily":
@@ -184,8 +196,10 @@ public class Yearly implements Ticket {
     }
 
     /**
+
      * Display personal details
      * @return all personal details from user input
+
      */
     public String obtainYearlyTicketInfo() {
         return "\nID Number: " + getIdNum() +
@@ -221,6 +235,7 @@ public class Yearly implements Ticket {
     }
 
     /**
+
      * The loop for buying yearly ticket
      * @return number of tickets wanted to buy, getting personal info
      */

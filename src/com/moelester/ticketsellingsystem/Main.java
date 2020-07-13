@@ -7,8 +7,6 @@ public class Main {
 
         Scanner keyboardInput = new Scanner(System.in);
 
-        char repeat;
-
         System.out.println("                                     /$$$$$$$$                           /$$   /$$                                                                                                    \n" +
                 "                                    |_____ $$                           | $$$ | $$                                                                                                    \n" +
                 "                                         /$$/   /$$$$$$   /$$$$$$       | $$$$| $$  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$                                                    \n" +
@@ -51,6 +49,7 @@ public class Main {
 
             do {
 
+                //Ask user for function that they want to perform
                 System.out.println("\nPlease select the function (0-3):");
                 System.out.println("1. Perform Daily Ticket Transaction");
                 System.out.println("2. Perform Yearly Ticket Transaction");
@@ -61,6 +60,7 @@ public class Main {
 
                 switch (typeChar) {
                     case '1' -> {
+                        //For Daily transaction
                         System.out.println("\nYou have selected perform daily ticket transaction.");
                         double[] dailyTotal = Daily.performDailyTransaction();
                         String dailyTransactionData = Sales.obtainTransactionData("Daily", (int) dailyTotal[0], dailyTotal[1]);
@@ -68,6 +68,7 @@ public class Main {
                         Sales.writeTransaction(dailyTransactionData);
                     }
                     case '2' -> {
+                        //For Yearly transaction
                         System.out.println("\nYou have selected perform yearly ticket transaction.");
                         double[] yearlyTotal = Yearly.performYearlyTransaction();
                         String yearlyTransactionData = Sales.obtainTransactionData("Yearly", (int) yearlyTotal[0], yearlyTotal[1]);
@@ -75,18 +76,19 @@ public class Main {
                         Sales.writeTransaction(yearlyTransactionData);
                     }
                     case '3' -> {
+                        //Generate Report
                         System.out.println("\nYou have selected generate report.");
                         String reportData = Sales.generateReport();
                         System.out.println(reportData);
                         Sales.writeReport(reportData);
                     }
-                    case '0' -> System.exit(0);
-                    default -> System.out.println("\nInvalid input! Please input only 0-3.");
+                    case '0' -> System.exit(0);                                                     //Exit program
+                    default -> System.out.println("\nInvalid input! Please input only 0-3.");       //Invalid Input
                 }
 
-            } while (typeChar != '1' && typeChar != '2' && typeChar != '3');
+            } while (typeChar != '1' && typeChar != '2' && typeChar != '3');                        //Loop while invalid input
 
-        } while (true);
+        } while (true);                                                                             //Infinite loop, break condition is typeChar = 0
 
     }
 }
