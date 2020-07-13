@@ -1,6 +1,5 @@
 package com.moelester.ticketsellingsystem;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Daily implements Ticket {
@@ -35,18 +34,8 @@ public class Daily implements Ticket {
      * @param c "Senior", "Adult" or "Kid/Student"
      */
 
-    private int noOfTickets;
-    private LocalDate dayPurchased;
-
     public Daily(String c) {
-        this.type = "Daily";
-        this.category = c;
         determinePrice(type, category);
-    }
-
-    public Daily() {
-        noOfTickets = 0;
-        dayPurchased = null;
     }
 
     // Override getters and setters from Ticket interface
@@ -54,7 +43,7 @@ public class Daily implements Ticket {
     public double getPrice() {
         return price;
     }
-
+    
     @Override
     public String getCategory() {
         return category;
@@ -78,28 +67,6 @@ public class Daily implements Ticket {
     @Override
     public void setType(String t) {
         type = t;
-    }
-
-    // Getters and setters implementation
-    public int getNoOfTickets() {
-        return noOfTickets;
-    }
-
-    public LocalDate getDayPurchased() {
-        return dayPurchased;
-    }
-
-    public void setNoOfTickets(int noOfTickets) {
-        this.noOfTickets = noOfTickets;
-    }
-
-    public void setDayPurchased(LocalDate dayPurchased) {
-        this.dayPurchased = dayPurchased;
-    }
-
-    public void dailyTicket(int noOfTickets, LocalDate dayPurchased) {
-        this.noOfTickets = noOfTickets;
-        this.dayPurchased = dayPurchased;
     }
 
     // Switch case for price table
@@ -142,32 +109,36 @@ public class Daily implements Ticket {
                 break;
         }
     }
-
+    
+/**
+ * If perform daily transaction is selected, integer input for each category of tickets are stored in an array(catQuantity).
+ * @return  Total quantity of tickets and total profit from those tickets are returned
+ */
     public static double[] performDailyTransaction() {
         int[] catQuantity = {0, 0, 0};
 
-        Scanner dailyScanner = new Scanner(System.in);
+        Scanner dailyScanner = new Scanner(System.in); // Scanner is used to obtain user input
 
         System.out.println("\nPlease enter the amount of tickets for each category:");
         System.out.println("Senior: ");
-        catQuantity[0] = dailyScanner.nextInt();
+        catQuantity[0] = dailyScanner.nextInt(); // User inputs amount of ticket for Senior category
 
         System.out.println("Adult: ");
-        catQuantity[1] = dailyScanner.nextInt();
+        catQuantity[1] = dailyScanner.nextInt(); // User inputs amount of ticket for Adult category
 
         System.out.println("Kid/Student: ");
-        catQuantity[2] = dailyScanner.nextInt();
+        catQuantity[2] = dailyScanner.nextInt(); // User inputs amount of ticket for Kid/Student category
 
-        double[] total = {0, 0};
+        double[] total = {0, 0}; // An array with double data type is used to store total tickets sold and total profit earned
 
-        total[0] = catQuantity[0] + catQuantity[1] + catQuantity[2];
+        total[0] = catQuantity[0] + catQuantity[1] + catQuantity[2]; // Adding up quantity of each ticket category into total.
 
         Daily seniorTicket = new Daily("Senior");
-        total[1] += seniorTicket.getPrice() * catQuantity[0];
+        total[1] += seniorTicket.getPrice() * catQuantity[0]; // Multiplying quantity of Senior category with price of Senior ticket and incrementing the value in total[1].
         Daily adultTicket = new Daily("Adult");
-        total[1] += adultTicket.getPrice() * catQuantity[1];
+        total[1] += adultTicket.getPrice() * catQuantity[1]; // Multiplying quantity of Adult category with price of Adult ticket and incrementing the value in total[1].
         Daily kidTicket = new Daily("Kid/Student");
-        total[1] += kidTicket.getPrice() * catQuantity[2];
+        total[1] += kidTicket.getPrice() * catQuantity[2]; // Multiplying quantity of Kid/Student category with price of Kid/Student ticket and incrementing the value in total[1].
 
         return total;
     }
