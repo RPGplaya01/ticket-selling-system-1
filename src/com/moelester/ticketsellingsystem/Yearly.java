@@ -292,7 +292,7 @@ public class Yearly implements Ticket {
             idNum = idScanner.next();
 
             if (idNum.matches("[0-9]+")) {
-                validation = true;
+                idValidation = true;
             } else {
                 System.out.print("\nInvalid input. Please input numbers only.");
             }
@@ -315,7 +315,7 @@ public class Yearly implements Ticket {
             name = nameScanner.next();
 
             if (name.matches("[a-z A-Z]+")) {
-                validation = true;
+                nameValidation = true;
             } else {
                 System.out.print("\nInvalid input. Please enter again.");
                 name = null;
@@ -353,7 +353,7 @@ public class Yearly implements Ticket {
             gender = genderScanner.next();
 
          if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
-             validation = true;
+             genderValidation = true;
              gender = gender.toUpperCase();
             } else {
                 System.out.print("\nInvalid input. Please input 'f' or 'm' only.");
