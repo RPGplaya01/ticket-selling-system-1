@@ -60,6 +60,7 @@ public class Yearly implements Ticket {
 
     /**
      * Constructor method for yearly ticket type
+     *
      * @param c      for the category of tickets "adult" "senior" "kid/student"
      * @param idNum  Id Number of the owner of yearly ticket
      * @param name   Name of the owner of yearly ticket
