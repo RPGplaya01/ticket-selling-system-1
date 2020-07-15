@@ -43,7 +43,7 @@ public class Daily implements Ticket {
     public double getPrice() {
         return price;
     }
-    
+
     @Override
     public String getCategory() {
         return category;
@@ -114,11 +114,12 @@ public class Daily implements Ticket {
                 break;
         }
     }
-    
-/**
- * If perform daily transaction is selected, integer input for each category of tickets are stored in an array(catQuantity).
- * @return  Total quantity of tickets and total profit from those tickets are returned
- */
+
+    /**
+     * If perform daily transaction is selected, integer input for each category of tickets are stored in an array(catQuantity).
+     *
+     * @return Total quantity of tickets and total profit from those tickets are returned
+     */
     public static double[] performDailyTransaction() {
         int[] catQuantity = {0, 0, 0};
 

@@ -59,12 +59,13 @@ public class Yearly implements Ticket {
     private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
     /**
-     * Attributes
-     * @param c         for the category of tickets "adult" "senior" "kid/student"
-     * @param idNum     Id Number of the owner of yearly ticket
-     * @param name      Name of the owner of yearly ticket
-     * @param addr      Address of the owner of yearly ticket
-     * @param gender    Gender of the owner of yearly ticket
+     * Constructor method for yearly ticket type
+     *
+     * @param c      for the category of tickets "adult" "senior" "kid/student"
+     * @param idNum  Id Number of the owner of yearly ticket
+     * @param name   Name of the owner of yearly ticket
+     * @param addr   Address of the owner of yearly ticket
+     * @param gender Gender of the owner of yearly ticket
      */
     public Yearly(String c, String idNum, String name, String addr, String gender) {
         this.type = "Yearly";
@@ -135,7 +136,7 @@ public class Yearly implements Ticket {
     }
 
     public void setIdNum(String idNum) {
-            this.idNum = idNum;
+        this.idNum = idNum;
     }
 
     public void setName(String name) {
@@ -147,11 +148,12 @@ public class Yearly implements Ticket {
     }
 
     public void setGender(String gender) {
-            this.gender = gender.toUpperCase();
+        this.gender = gender.toUpperCase();
     }
 
     /**
      * Switch case for price table
+     *
      * @param t Represents the ticket type (Daily/Yearly)
      * @param c Represents the ticket category (Senior, Adult, Kid/Student)
      */
@@ -196,10 +198,9 @@ public class Yearly implements Ticket {
     }
 
     /**
-
      * Display personal details
+     *
      * @return all personal details from user input
-
      */
     public String obtainYearlyTicketInfo() {
         return "\nID Number: " + getIdNum() +
@@ -210,6 +211,7 @@ public class Yearly implements Ticket {
 
     /**
      * Writes into txt file
+     *
      * @param yearlyTicketInfo
      */
     public void writeYearlyTicketInfo(String yearlyTicketInfo) {
@@ -235,8 +237,8 @@ public class Yearly implements Ticket {
     }
 
     /**
-
      * The loop for buying yearly ticket
+     *
      * @return number of tickets wanted to buy, getting personal info
      */
     public static double[] performYearlyTransaction() {
@@ -273,7 +275,7 @@ public class Yearly implements Ticket {
                 default -> System.out.println("\nInvalid input! Please input only 1-3.");
             }
 
-        
+
             String idNum = askIdNum();
 
             String name = askName();
@@ -295,6 +297,7 @@ public class Yearly implements Ticket {
 
     /**
      * Method to get Id Number with validation of only input numbers
+     *
      * @return id number
      */
     private static String askIdNum() {
@@ -318,6 +321,7 @@ public class Yearly implements Ticket {
 
     /**
      * Method to get name with validation of only input alphabets
+     *
      * @return name
      */
     private static String askName() {
@@ -342,6 +346,7 @@ public class Yearly implements Ticket {
 
     /**
      * Method to get address
+     *
      * @return address
      */
     private static String askAddress() {
@@ -350,26 +355,27 @@ public class Yearly implements Ticket {
 
         System.out.println("\nPlease enter the address:");
         address = addressScanner.next();
-        
+
         return address;
     }
 
     /**
      * Method to get gender with validation of only F or M
+     *
      * @return gender
      */
     private static String askGender() {
         boolean genderValidation = false;
         Scanner genderScanner = new Scanner(System.in);
         String gender;
-        
-        do{
+
+        do {
             System.out.println("\nPlease enter the gender ('f' or 'm'):");
             gender = genderScanner.next();
 
-         if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
-             genderValidation = true;
-             gender = gender.toUpperCase();
+            if (gender.equals("m") || gender.equals("M") || gender.equals("f") || gender.equals("F")) {
+                genderValidation = true;
+                gender = gender.toUpperCase();
             } else {
                 System.out.print("\nInvalid input. Please input 'f' or 'm' only.");
                 gender = null;
