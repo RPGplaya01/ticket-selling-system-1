@@ -35,6 +35,8 @@ public class Daily implements Ticket {
      */
 
     public Daily(String c) {
+        this.type = "Daily";
+        this.category = c;
         determinePrice(type, category);
     }
 
@@ -72,6 +74,7 @@ public class Daily implements Ticket {
     /**
      * Switch case for price table
      * This method determines/assigns the price of each ticket category for each ticket type
+     *
      * @param t Represents the ticket type (Daily/Yearly)
      * @param c Represents the ticket category (Senior, Adult, Kid/Student)
      */
