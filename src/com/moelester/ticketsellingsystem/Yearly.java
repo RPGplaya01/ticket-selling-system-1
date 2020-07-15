@@ -59,12 +59,12 @@ public class Yearly implements Ticket {
     private ArrayList<ArrayList<String>> YearlyTickets = new ArrayList<ArrayList<String>>();
 
     /**
-     *
-     * @param c
-     * @param idNum
-     * @param name
-     * @param addr
-     * @param gender
+     * Attributes
+     * @param c         for the category of tickets "adult" "senior" "kid/student"
+     * @param idNum     Id Number of the owner of yearly ticket
+     * @param name      Name of the owner of yearly ticket
+     * @param addr      Address of the owner of yearly ticket
+     * @param gender    Gender of the owner of yearly ticket
      */
     public Yearly(String c, String idNum, String name, String addr, String gender) {
         this.type = "Yearly";
@@ -152,8 +152,8 @@ public class Yearly implements Ticket {
 
     /**
      * Switch case for price table
-     * @param t
-     * @param c
+     * @param t Represents the ticket type (Daily/Yearly)
+     * @param c Represents the ticket category (Senior, Adult, Kid/Student)
      */
     private void determinePrice(String t, String c) {
         switch (t) {
