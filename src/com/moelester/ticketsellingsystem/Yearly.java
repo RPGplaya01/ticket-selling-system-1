@@ -206,7 +206,7 @@ public class Yearly implements Ticket {
     /**
      * Writes into txt file
      *
-     * @param yearlyTicketInfo
+     * @param yearlyTicketInfo Yearly ticket information obtained from obtainYearlyTicketInfo()
      */
     public void writeYearlyTicketInfo(String yearlyTicketInfo) {
         try {
@@ -231,9 +231,9 @@ public class Yearly implements Ticket {
     }
 
     /**
-     * The loop for buying yearly ticket
+     * Performs yearly ticket transaction which includes obtaining total quantity and profit and storing personal details
      *
-     * @return number of tickets wanted to buy, getting personal info
+     * @return Total quantity of tickets and total profit from those tickets are returned
      */
     public static double[] performYearlyTransaction() {
         double[] total = {0, 0};
