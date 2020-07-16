@@ -32,12 +32,6 @@ public class Yearly implements Ticket {
      */
     private double price = 0;
 
-    /**
-     * Constructor for ticket subtypes
-     *
-     * @param c "Senior", "Adult" or "Kid/Student"
-     */
-
     private String idNum;
     private String name;
     private String addr;
