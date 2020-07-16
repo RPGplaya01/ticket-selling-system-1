@@ -16,7 +16,7 @@ public interface Ticket {
      * +--------------------+----------+-----------+
      * <pre>
      */
-    double[][] PRICE_LIST = {
+    final double[][] PRICE_LIST = {
             {30, 100},
             {50, 120},
             {20, 80}};
