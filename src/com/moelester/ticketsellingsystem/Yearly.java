@@ -325,7 +325,7 @@ public class Yearly implements Ticket {
 
         do {
             System.out.println("\nPlease enter the name:");
-            name = nameScanner.next();
+            name = nameScanner.nextLine();
 
             if (name.matches("[a-z A-Z]+")) {
                 nameValidation = true;
@@ -348,7 +348,7 @@ public class Yearly implements Ticket {
         String address;
 
         System.out.println("\nPlease enter the address:");
-        address = addressScanner.next();
+        address = addressScanner.nextLine();
 
         return address;
     }
