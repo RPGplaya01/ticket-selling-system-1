@@ -1,22 +1,16 @@
 # ticket-selling-system
 
-# Ver 1.0 (Everyone)
-<u>Created Daily, Yearly, Main, Ticket and Sales</u>
+The National Zoo Malaysia operates since 1963. The visitors are required to buy tickets to enter the zoo. The Zoo management team keep tracks of the ticket sales for data analysis purposes. Therefore, a ticket selling system is developed to assist the zoo’s operation such as recording the ticket sales and transactions. The system also generates sales reports. 
 
-Done:
-- Javadocs for base fields 👍
-- Overrided ALL getters and setters 👍
-- Made determinePrice() [Just use it in the constructor then you're good to go] 👍
-- Implement class (Ticket) is *DONE* 👏👍
-- Sales class with addTicketTransaction() and printReport()
-- Daily and Yearly specific elements (based on class diagram)
-- Implement write transactions to transactions.txt (Marcus)
-- Implement read transactions.txt and generate report which writes to report.txt
-- Object orient main method better
-- Change printInfo() to return String data for writeInfo() and rename the methods (Marcus)
+The ticket can be divided into two categories, Yearly Admission Ticket and Day Admission Ticket. One sales transaction supports only one ticket type. A visitor can buy several tickets in one sales transaction. But per transaction allows purchasing of maximum 3 Yearly Admission Ticket only. The ticket owner’s personal information such as identity number, name, address and etc must be recorded for each ticket. A visitor can buy unlimited amount of daily ticket. The buyer’s information is not required for the purchase of the daily tickets.
 
-TODO:
-- Update your own class in class diagram (Everyone)
-- Implement input validation with do while loops of each class (Everyone)
-- Write Java Docs and comments for every class (Everyone)
-- Add comments to main class (Wen Jun)
+The following table shows the ticket pricing details: -
+
+| Ticket Type | Category                       | Price            |
+|-------------|--------------------------------|------------------|
+| Yearly      | Senior<br>Adult<br>Kid/Student | 100<br>120<br>80 |
+| Daily       | Senior<br>Adult<br>Kid/Student | 30<br>50<br>20   |
+
+You are required to form a group of 3-4 members to create the class diagram for the above scenario. You must include justification for the attributes and methods in each class. Besides, discuss the object-oriented concept that you used in your design. 
+
+Based on the class diagram created, write a program using any object-oriented programming language (Java, C#, VB.net).
